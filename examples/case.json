@@ -1,0 +1,29 @@
+{
+  "company": "Ubuntu Industrial Components",
+  "currency": "ZAR",
+  "valuation_date": "2026-11-04",
+  "years": 5,
+  "opening": {
+    "revenue": 120000000, "cash": 8000000, "excess_cash": 5000000,
+    "receivables": 14000000, "inventory": 11000000, "ppe": 42000000,
+    "payables": 12000000, "debt": 23000000, "equity": 40000000,
+    "diluted_shares": 5000000, "source": "Fictional opening balances."
+  },
+  "drivers": {
+    "revenue_growth": 0.08, "ebitda_margin": 0.19, "depreciation_rate": 0.04,
+    "capex_rate": 0.06, "receivables_rate": 0.12, "inventory_rate": 0.09,
+    "payables_rate": 0.10, "tax_rate": 0.27, "borrowing_rate": 0.10,
+    "wacc": 0.145, "terminal_growth": 0.04, "terminal_roic": 0.14,
+    "source": "Fictional assumptions. All rates annual and nominal."
+  },
+  "peers": [
+    {"name":"Peer A","enterprise_value":160000000,"forward_ebitda":20000000,"source":"Synthetic forward multiple."},
+    {"name":"Peer B","enterprise_value":175000000,"forward_ebitda":25000000,"source":"Synthetic forward multiple."},
+    {"name":"Peer C","enterprise_value":108000000,"forward_ebitda":18000000,"source":"Synthetic forward multiple."}
+  ],
+  "risks": [
+    {"factor":"environmental","issue":"Electricity reliability investment","source":"Fictional scenario","confidence":"low","start":1,"end":2,"driver":"capex_rate","change_pp":2},
+    {"factor":"social","issue":"Wage pressure","source":"Fictional scenario","confidence":"low","start":1,"end":3,"driver":"ebitda_margin","change_pp":-1.5},
+    {"factor":"governance","issue":"Procurement remediation costs","source":"Fictional scenario","confidence":"low","start":1,"end":1,"driver":"ebitda_margin","change_pp":-0.5}
+  ]
+}

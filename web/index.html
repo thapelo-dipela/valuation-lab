@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valuation Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#101923;--panel:#172431;--line:#314456;--ink:#edf4f8;--muted:#aebfcc;--accent:#84ebbc}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui}header,main{max-width:1350px;margin:auto;padding:24px}header{border-bottom:1px solid var(--line)}h1{font-size:clamp(2rem,5vw,4rem);margin:0}h2{font-size:1.15rem;margin-top:0}.tag{color:var(--accent);font-size:.75rem;letter-spacing:.15em;font-weight:700}p{color:var(--muted)}main{display:grid;grid-template-columns:minmax(280px,1fr) minmax(0,2fr);gap:18px}.panel,.metric{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}.metric strong{display:block;font-size:1.4rem;color:var(--accent)}textarea{width:100%;height:32rem;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:12px;border-radius:6px;font:13px/1.5 monospace}button,label.upload{background:#233b4a;border:1px solid var(--line);border-radius:6px;color:var(--ink);padding:8px 12px;margin:4px 4px 4px 0;cursor:pointer;display:inline-block}button.primary{background:var(--accent);color:#101923;font-weight:bold}button:disabled{opacity:.5;cursor:default}input[type=file]{max-width:100%;margin:8px 0}section+section{margin-top:16px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse}th,td{padding:7px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}th:first-child,td:first-child{text-align:left}pre{white-space:pre-wrap;color:#f5b3ab}a{color:var(--accent)}@media(max-width:800px){main{grid-template-columns:1fr}textarea{height:18rem}}
+</style>
+</head>
+<body>
+<header><div class="tag">OPEN VALUATION WORKBENCH / 0.1</div><h1>Valuation Lab</h1><p>Operating-company forecasts, valuation evidence and ESG scenarios in one reviewable case.</p></header>
+<main>
+<aside class="panel"><h2>Case inputs</h2><button id="sample">Load fictional case</button><input id="upload" aria-label="Upload case JSON" type="file" accept=".json,application/json"><textarea id="input" aria-label="Case JSON" spellcheck="false"></textarea><button class="primary" id="run">Run valuation</button><a href="/docs">API schema</a><pre id="status" role="status"></pre></aside>
+<article>
+<section class="panel"><h2 id="company">Valuation overview</h2><div id="metrics" class="metrics"></div><p id="meta">Load an example or supply a JSON case.</p><div id="exports"><button data-kind="docx" disabled>Word report</button><button data-kind="xlsx" disabled>Excel statements</button><button data-kind="pptx" disabled>PowerPoint</button></div></section>
+<section class="panel"><h2>Base forecast</h2><div id="forecast" class="scroll"></div></section>
+<section class="panel"><h2>Per-share sensitivity</h2><div id="sensitivity" class="scroll"></div></section>
+<section class="panel"><h2>Scenario evidence and model checks</h2><ul id="checks"></ul></section>
+</article>
+</main>
+<script>
+const by = id => document.getElementById(id);
+const number = new Intl.NumberFormat(undefined,{maximumFractionDigits:2});
+const percent = new Intl.NumberFormat(undefined,{style:"percent",maximumFractionDigits:2});
+let completedCase;
+const exports = [...document.querySelectorAll("[data-kind]")];
+function append(root, tag, content) {
+  const el = document.createElement(tag);
+  el.textContent = content;
+  root.append(el);
+  return el;
+}
+function table(id, headers, rows) {
+  const host = by(id);
+  host.replaceChildren();
+  const grid = append(host,"table","");
+  const head = append(append(grid,"thead",""),"tr","");
+  headers.forEach(value=>append(head,"th",value));
+  const body = append(grid,"tbody","");
+  rows.forEach(row=>{
+    const tr=append(body,"tr","");
+    row.forEach(value=>append(tr,"td",value));
+  });
+}
+function show(result) {
+  const data = result.inputs;
+  by("company").textContent = data.company;
+  by("meta").textContent = data.currency + " · " + data.valuation_date + " · Input " + result.input_sha256.slice(0,12);
+  by("metrics").replaceChildren();
+  for (const [name,model] of [["Base DCF / share",result.base],["ESG scenario / share",result.scenario],["Peer median / share",result.comps]]) {
+    const card = append(by("metrics"),"div",name);
+    card.className="metric";
+    append(card,"strong",model.per_share == null ? "Unavailable" : number.format(model.per_share));
+  }
+  const forecast = result.statements;
+  table("forecast",["Metric",...forecast.map(r=>"Year "+r.year)],
+    ["revenue","ebitda","ebit","net_income","cfo","cfi","cash","debt","fcff"].map(key=>[key.replaceAll("_"," "),...forecast.map(row=>number.format(row[key]))]));
+  const rates = [...new Set(result.sensitivity.map(row=>row.wacc))];
+  const growth = [...new Set(result.sensitivity.map(row=>row.growth))];
+  table("sensitivity",["WACC / Growth",...growth.map(g=>percent.format(g))],
+    rates.map(w=>[percent.format(w),...result.sensitivity.filter(row=>row.wacc===w).map(row=>row.per_share == null ? "N/A" : number.format(row.per_share))]));
+  by("checks").replaceChildren();
+  for (const r of data.risks) append(by("checks"),"li",r.factor + " · " + r.issue + " · " + r.driver + " " + r.change_pp + " pp · years " + r.start + "–" + r.end + " · " + r.confidence + " confidence · " + r.source);
+  for (const model of [result.base,result.scenario]) if(model.reason) append(by("checks"),"li",model.reason);
+  for (const check of result.checks) append(by("checks"),"li",check);
+}
+async function guarded(work) {
+  by("status").textContent="";
+  try { await work(); } catch(error) { by("status").textContent=error.message; }
+}
+by("sample").onclick=()=>guarded(async()=>{
+  const response=await fetch("/api/v1/example");
+  if(!response.ok) throw Error("Example unavailable");
+  by("input").value=JSON.stringify(await response.json(),null,2);
+});
+by("upload").onchange=()=>guarded(async()=>{
+  const file=by("upload").files[0];
+  if(file && file.size>262144) throw Error("Case file exceeds 256 KB");
+  if(file) by("input").value=await file.text();
+});
+async function post(path, payload) {
+  const response=await fetch(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+  if(!response.ok) {
+    const error=await response.json();
+    throw Error(JSON.stringify(error.detail,null,2));
+  }
+  return response;
+}
+by("run").onclick=()=>guarded(async()=>{
+  by("run").disabled=true;
+  try {
+    const response=await post("/api/v1/valuation",JSON.parse(by("input").value));
+    const result=await response.json();
+    show(result);
+    completedCase=result.inputs;
+    exports.forEach(button=>button.disabled=false);
+  } finally { by("run").disabled=false; }
+});
+exports.forEach(button=>button.onclick=()=>guarded(async()=>{
+  const kind=button.dataset.kind;
+  const response=await post("/api/v1/export/"+kind,completedCase);
+  const url=URL.createObjectURL(await response.blob());
+  const link=document.createElement("a");
+  link.href=url;
+  link.download="valuation."+kind;
+  link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}));
+by("sample").click();
+</script>
+</body>
+</html>
