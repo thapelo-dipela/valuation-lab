@@ -64,11 +64,26 @@ def review_workflow(case: Case, result, evidence=None):
                 detail="Confirm purpose, basis, perimeter and currency with the analyst.",
             ),
             dict(
-                stage="02 / Evidence",
+                stage="Sources",
                 status="blocked"
                 if missing or conflicts or future or synthetic
                 else "pass",
-                detail=f"{len(evidence)} records; {len(missing)} required mappings missing; {len(conflicts)} conflicts; {len(future)} look-ahead records.",
+                detail=(
+                    "You are exploring fictional data. Calculations work; add real financial statements and support your assumptions before using the results for research. "
+                    if synthetic
+                    else ""
+                )
+                + (
+                    "Still needed: "
+                    + ", ".join(
+                        path.replace("drivers.", "").replace("_", " ")
+                        for path in missing
+                    )
+                    + ". "
+                    if missing
+                    else "Required assumptions have source records. "
+                )
+                + f"{len(conflicts)} conflicting sources; {len(future)} sources published after the valuation date.",
             ),
             dict(
                 stage="03 / Reconcile",

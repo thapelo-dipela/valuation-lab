@@ -98,3 +98,9 @@ python scripts/browser_smoke.py
 - [Third-party notices](THIRD_PARTY_NOTICES.md)
 
 The curated library is extensible; it is not the full licensed CFA or CFP curriculum. The local application is single-user and unauthenticated. Keep it on loopback until production access controls and deployment review are implemented.
+
+## Accounting workspace
+
+Financials now provides editable annual statements, historical revenue/earnings/CFO charts, average-balance ratios and CSV import/export. Forecasts provides annual driver schedules and projected income/balance/cash-flow tables. Share price provides imported OHLCV candles, historical price returns and five comparable per-share methods. Calculators use labelled fields rather than JSON editors. The design follows the requested GitHub-style dark layout.
+
+See [accounting workspace contracts](docs/accounting-workspace.md) for units, currency conversion, evidence and licensing boundaries. New endpoints: POST `/api/v1/accounting`, GET `/api/v1/fx?base=ZAR&quote=USD&as_of=2026-11-04`.

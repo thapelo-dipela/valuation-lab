@@ -1,4 +1,6 @@
 from pathlib import Path
+from datetime import date
+from accounting import Accounts, analyze, fx_quote
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query
@@ -41,6 +43,31 @@ from instruments import search_instruments, repository_catalog
 ROOT = Path(__file__).resolve().parent
 app = FastAPI(title="Valuation Lab", version="0.2.0")
 app.mount("/static", StaticFiles(directory=ROOT / "web"), name="static")
+
+
+@app.post("/api/v1/accounting")
+def accounting_analysis(request: Accounts, save: bool = False):
+    result = analyze(request)
+    if save:
+        result["snapshot_id"] = knowledge.save_snapshot(
+            "user-financial-statements", request.model_dump(mode="json")
+        )
+    return result
+
+
+@app.get("/api/v1/fx")
+def currency_quote(
+    base: str = Query(pattern="^[A-Z]{3}$"),
+    quote: str = Query(pattern="^[A-Z]{3}$"),
+    as_of: date = Query(),
+):
+    try:
+        return fx_quote(base, quote, as_of)
+    except (ValueError, KeyError, httpx.HTTPError) as error:
+        raise HTTPException(
+            422,
+            "Exchange rate unavailable. Keep the source currency or choose another date/pair.",
+        ) from error
 
 
 class AnalysisRequest(Input):

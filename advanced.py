@@ -174,6 +174,10 @@ def macro_case(case: Case, shock: MacroShock):
     d["wacc"] += rate_delta
     d["borrowing_rate"] += rate_delta
     d["source"] = (d["source"] + " | Macro: " + shock.source)[:1000]
+    for annual in payload.get("annual_drivers", []):
+        annual["revenue_growth"] += growth_delta
+        annual["ebitda_margin"] += margin_delta
+        annual["borrowing_rate"] += rate_delta
     adjusted = Case.model_validate(payload)
     return dict(
         transmission=dict(
@@ -232,6 +236,9 @@ def simulate(case: Case, settings: Simulation):
             z,
         ):
             data["drivers"][key] += float(sd * shock)
+            if key != "wacc":
+                for annual in data.get("annual_drivers", []):
+                    annual[key] += float(sd * shock)
         try:
             sample = Case.model_validate(data)
         except ValidationError:
@@ -319,6 +326,9 @@ def diagnostics(case: Case):
         for sign in (-1, 1):
             payload = case.model_dump()
             payload["drivers"][key] += sign * delta
+            if key in ("revenue_growth", "ebitda_margin", "capex_rate"):
+                for annual in payload.get("annual_drivers", []):
+                    annual[key] += sign * delta
             try:
                 vals.append(
                     value(Case.model_validate(payload))["base"].get("per_share")
@@ -341,7 +351,10 @@ def diagnostics(case: Case):
         - case.opening.payables
     )
     for r in result["statements"]:
-        nopat = r["ebit"] - max(r["ebit"], 0) * case.drivers.tax_rate
+        annual = (
+            case.annual_drivers[r["year"] - 1] if case.annual_drivers else case.drivers
+        )
+        nopat = r["ebit"] - max(r["ebit"], 0) * annual.tax_rate
         ratios.append(
             dict(
                 year=r["year"],

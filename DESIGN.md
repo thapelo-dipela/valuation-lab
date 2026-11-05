@@ -1,39 +1,45 @@
 ---
 name: Valuation Lab
-description: A light editorial research workbench for inspectable valuation.
+description: A compact dark financial workspace for learning and inspectable valuation.
 colors:
-  paper: "#f7f8f4"
-  white: "#fff"
-  ink: "#18352f"
-  muted: "#596a63"
-  line: "#d6dfd7"
-  accent: "#176854"
-  soft: "#e5eee5"
-  warm: "#a64d29"
-  focus: "#905018"
-  primary-hover: "#104c3e"
-  controls: "#edf1e9"
-  stale-bg: "#f5e6ca"
-  stale-text: "#704b17"
-  blocked-bg: "#f3dfd4"
-  blocked-text: "#903e21"
-  error: "#9b3426"
-  band: "#d5e4d7"
-  histogram: "#327763"
-  tornado: "#779a88"
+  paper: "#0d1117"
+  white: "#161b22"
+  ink: "#e6edf3"
+  muted: "#9da7b3"
+  line: "#30363d"
+  accent: "#58a6ff"
+  soft: "#21262d"
+  warm: "#f78166"
+  focus: "#58a6ff"
+  masthead: "#010409"
+  primary: "#238636"
+  primary-hover: "#2ea043"
+  on-primary: "#fff"
+  positive: "#3fb950"
+  negative: "#f85149"
+  brand-green: "#7ee787"
+  input-border: "#484f58"
+  placeholder: "#8b949e"
+  selection: "#264f78"
+  selected-statement: "#263749"
+  selected-nav: "#79c0ff"
+  warning: "#f2cc60"
+  stale: "#e3b341"
+  blocked: "#3d2b14"
+  error-text: "#ffa198"
 typography:
   display:
-    fontFamily: "Georgia, 'Times New Roman', serif"
-    fontSize: "clamp(25px, 2.4vw, 38px)"
-    fontWeight: 400
+    fontFamily: "'Segoe UI', system-ui, sans-serif"
+    fontSize: "24px"
+    fontWeight: 600
     lineHeight: 1.18
-    letterSpacing: "-.025em"
+    letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Georgia, 'Times New Roman', serif"
-    fontSize: "25px"
-    fontWeight: 400
+    fontFamily: "'Segoe UI', system-ui, sans-serif"
+    fontSize: "18px"
+    fontWeight: 600
     lineHeight: 1.25
-    letterSpacing: "-.02em"
+    letterSpacing: "0"
   title:
     fontFamily: "'Segoe UI', system-ui, sans-serif"
     fontSize: "14px"
@@ -47,148 +53,115 @@ typography:
     fontSize: "12px"
     fontWeight: 600
   metric:
-    fontFamily: "Georgia, 'Times New Roman', serif"
-    fontSize: "35px"
+    fontFamily: "'Segoe UI', system-ui, sans-serif"
+    fontSize: "27px"
     fontWeight: 400
     lineHeight: 1.3
-  code:
-    fontFamily: "Consolas, monospace"
-    fontSize: "12px"
-    lineHeight: 1.6
 rounded:
-  field: "3px"
-  button: "4px"
+  control: "6px"
   mode: "5px"
 spacing:
-  compact: "8px"
-  field: "9px"
-  small: "10px"
-  medium: "18px"
-  section: "20px"
-  spacious: "25px"
-  columns: "30px"
+  xs: "4px"
+  sm: "8px"
+  md: "12px"
+  lg: "16px"
+  panel: "20px"
+  workspace: "24px"
 components:
   button-primary:
-    backgroundColor: "{colors.accent}"
-    textColor: "{colors.white}"
-    rounded: "{rounded.button}"
-    padding: "9px 14px"
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    rounded: "{rounded.control}"
+    padding: "7px 13px"
   button-primary-hover:
     backgroundColor: "{colors.primary-hover}"
-    textColor: "{colors.white}"
   button-secondary:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.button}"
-    padding: "9px 14px"
-  input:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.field}"
-    padding: "9px"
-  explanation:
     backgroundColor: "{colors.soft}"
-    padding: "16px 19px"
-  mode-active:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.white}"
-    padding: "4px 13px"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "7px 13px"
+  field:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "8px 10px"
+  panel:
+    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.control}"
+    padding: "20px"
 ---
 
 # Design System: Valuation Lab
 
 ## Overview
 
-**Creative North Star: “The Editorial Research Workbench”** is a descriptive name for the implemented direction, not a separately approved brand concept. This light, restrained workspace pairs serif analytical headings with compact system-font controls. Pale paper surfaces, ruled sections and open chart areas support sustained inspection of assumptions and evidence.
+**Creative North Star: GitHub-style dark financial workspace.** This is the user's selected visual direction: a compact, approachable workspace for teenage finance learners, students and analysts. Keep original Valuation Lab branding, plain financial language, visible evidence and inspectable assumptions. Guided and Advanced views share the same visual system.
 
-This document records the implemented system in `web/style.css`, `web/index.html` and `web/app.js`. The delivery context is Operate mode with confirmed Guided and Advanced views and a direct code-first approach. Reviewer disposition was ship after the mobile-legibility and stale-simulation fixes; this is not a claim of additional user design approval.
+This document records the implemented interface, not a speculative comp. `web/index.html` loads `web/style.css` first and `web/workspace.css` second; the workspace overrides define the approved dark identity. The legacy `--paper`, `--white` and `--serif` names remain compatibility aliases: paper and white are dark surfaces, and serif resolves to the sans-serif stack.
 
-**Key Characteristics:**
+Key characteristics:
 
-- Editorial headings and tabular numeric alignment.
-- Green base-case marks and terracotta scenario marks.
-- Flat, lightly ruled sections with compact forms.
-- Visible provenance, unavailable values and stale-result states.
+- Dense editable financial tables, compact controls and horizontal tabs.
+- Sans-serif headings and tabular numbers.
+- Dark tonal surfaces, blue links and focus, green actions, green/red candlesticks.
+- Explicit currency, unit and rate labels next to financial work.
 
 ## Colors
 
-The palette is pale botanical paper with deep green ink and a restrained terracotta comparison accent. Frontmatter carries the actual source values.
+Use the frontmatter values as the normative palette. Near-black paper forms the workspace; the deeper masthead anchors navigation. White is the raised dark surface for table headers, notices and metric strips. Soft separates hover and selected controls; line provides restrained dividers. Ink and muted distinguish primary information from explanatory text.
 
-### Primary
-
-- **Research green (`accent`)** identifies primary actions, links, selected tabs, base-case charts and positive bridge contributions. Its darker hover token applies to primary buttons.
-- **Soft green (`soft`)** supports explanations, code records, state labels and tornado tracks.
-
-### Secondary
-
-- **Terracotta (`warm`)** identifies scenario series and negative bridge contributions. Scenario lines are also dashed, so identity does not rely on hue alone.
-- **Amber focus (`focus`)** marks keyboard focus. Stale-result amber and blocked-state terracotta each have distinct background and text tokens.
-
-### Neutral
-
-- **Paper** is the page canvas; **white** supports the masthead and editable controls.
-- **Ink** is primary text; **muted** supports annotations and labels; **line** draws section boundaries and chart axes.
-- **Controls** gives the assumption rail its lightly tinted surface.
-
-**The Series Identity Rule.** Preserve green base and terracotta scenario semantics across chart legends, marks and tables. The sensitivity matrix uses a computed green HSL ramp from lightness 94% to 70%, rather than a categorical status palette.
+Blue accent is for links and focus. Green primary is for calculation and confirmation actions; brighter brand-green identifies the original Lab wordmark. Warm coral marks the selected horizontal tab. Positive and negative are the candlestick and direction colors. Warning, stale and error-text keep status messages readable on dark surfaces; preserve explanatory text so color is not the only signal.
 
 ## Typography
 
-Display and section headings use the serif stack; body text and controls use the system sans stack. Numeric content uses tabular figures. JSON and calculation records use Consolas with a monospace fallback.
+Use Segoe UI with system-ui and sans-serif fallbacks throughout normal financial work. There is no editorial serif hierarchy. Body is 14px/1.55 with tabular numerals; headings are 24px and 18px at weight 600. Smaller titles are 14px. Standard labels are 12px; workspace tool and method labels are 13px. Financial table text is 12px, with accounting headers at 13px. Metric strips use 27px values; market facts use 24px bold values. Explanatory paragraphs normally cap at 75ch; accounting currency notes cap at 90ch.
 
-The main heading balances text within 28 characters. Body paragraphs cap at 75 characters. Section headings use the headline token, while small component titles use the semibold title token. Knowledge-item headings are serif at 22px. Metric values use the metric token. Labels are compact and semibold; annotations generally range from 10px to 12px. Code records use a slightly roomier line height of 1.65.
-
-On narrow screens, the main heading is 30px, section headings 23px, metric values 26px, and chart text 12px. These are implemented overrides, not a universal proportional type scale.
+At 700px and below, the main heading is 20px, brand 17px and market facts 21px. Keep labels legible rather than replacing them with unexplained icons.
 
 ## Layout
 
-The centered application shell has a maximum width of 1900px and a 285px assumption rail beside a flexible, zero-minimum-width workspace. The masthead is 78px high. Desktop workspace padding is 35px 38px 20px. Metric strips have three equal columns with 25px gaps; paired analysis sections have two equal columns and 30px gaps. Forms use three columns, while search uses a 2:1 split.
+Desktop uses a 232px sidebar plus a flexible main workspace without a maximum shell width. The masthead is 64px high. Main padding is 24px 28px; sidebar padding is 22px 16px. Panels use 20px padding, with 20px gaps between paired regions. Toolbars wrap with 12px gaps. Editable accounting cells use 4px 8px padding; ordinary cells use 11px 14px. Numeric columns align right, descriptive first columns align left. Scroll containers preserve table structure and keep the first column sticky.
 
-At widths of at least 1500px, workspace horizontal padding increases to 55px and charts cap at 1150px. At 1150px and below, the rail narrows to 250px, paired sections stack, forms use two columns, and the edition label disappears. At 720px and below, the rail moves above the workspace, its driver controls use two columns, workspace padding becomes 25px 18px, and the masthead becomes 66px high. Knowledge rows and search stack; workflow descriptions move beneath their labels; export controls wrap. Metrics remain in three columns and forms remain in two.
-
-Tables and the horizontal tab row scroll within their containers. Tables preserve numeric alignment and nonwrapping values. Chart SVG view boxes are generated from their available container width, with a minimum plotting width of 320px, and redraw after a 150ms resize debounce.
+At 1000px and below, the sidebar becomes 190px, main padding becomes 20px 16px and method fields stack. The inherited base layout also collapses paired regions at 1150px and switches the shell to a vertical flex layout at 720px. At 700px, the workspace uses a single block layout with 18px 12px main padding, 14px panel padding and a 58px masthead. Sidebar actions are hidden, while horizontal tabs remain scrollable and metric strips use two columns. Mobile buttons have a 40px minimum height; desktop buttons have a 36px minimum height. Preserve these actual cascade boundaries when extending the interface.
 
 ## Elevation & Depth
 
-The implementation has no box shadows. Depth comes from the white masthead and fields, tinted assumption rail, soft explanatory surfaces, and thin ruled boundaries. Sections remain visually open instead of becoming raised cards. The active mode is a dark inset selection within a pale segmented container.
+Depth comes mainly from dark tonal surfaces and one-pixel borders. Buttons alone use a small structural shadow (`0 1px 0 #010409`); text buttons, tabs and side navigation remove it. Avoid floating dashboard cards and large decorative shadows.
+
+Views retain the base 0.22s ease-out opacity reveal from 0.8 to 1, disabled for reduced motion. Pressed buttons translate down by 1px. Do not introduce ornamental motion.
 
 ## Shapes
 
-Controls have gently softened corners: fields use the field radius, buttons the button radius, and the mode container the mode radius. Section surfaces and tables are square and ruled. Legend dots are circular. Primary and secondary buttons use 1px borders; keyboard outlines sit 4px outside controls. Charts use slender strokes and small focusable data points rather than heavy decoration.
+Controls, fields, panels, notices and metric strips have 6px corners. The mode switch container retains 5px corners. Horizontal tabs are square with a 2px coral selected underline. Borders organize the financial workspace; shapes remain simple and compact.
 
 ## Components
 
-### Buttons and fields
+### Buttons
 
-Primary buttons carry the green action color. Secondary buttons use white surfaces, thin line-colored borders, and soft-green hover surfaces. Standard buttons have a 40px minimum height; compact mode, text and knowledge controls deliberately use smaller observed variants. Disabled buttons have opacity 0.45 and the default cursor. Focusable controls and links receive a 2px focus-colored outline with a 4px offset.
+Primary actions use green primary, a primary-hover border, white text and 7px 13px padding. Hover uses primary-hover. Secondary controls use soft, then line on hover with a placeholder-colored border. Shared focus-visible styling is a 2px blue outline offset by 4px. Disabled buttons retain the base 0.45 opacity and default cursor. Preserve explicit verb labels.
 
-Fields have white backgrounds, thin borders and 9px internal padding. Driver rows pair a numeric percent input with a synchronized range slider. Driver edits recalculate after 350ms; raw JSON edits require the explicit apply action. Text areas resize vertically. Advanced mode reveals the complete case and correlation controls while hiding guided explanation text.
+### Fields and editable tables
 
-### Navigation and disclosure
+Fields use the paper surface, input-border stroke, 6px corners and 8px 10px padding. Focus changes the border to blue and keeps the shared visible outline. Accounting inputs are 128px wide, right-aligned and transparent at rest; focus reveals a raised surface and blue border. Table headers use the raised surface and weight 500. Rows gain the raised surface on hover. Use horizontal overflow for wide statements.
 
-Guided and Advanced controls expose their selected state through `aria-pressed`. Five analysis-view buttons use `aria-current="page"` and an accent underline for the current view. Overflow stays horizontally scrollable. Native disclosure sections reveal tables, full method text and model checks. A keyboard-visible skip link targets the workspace.
+### Navigation
 
-Views reveal through a 220ms ease-out opacity animation from 0.8 to 1. Reduced-motion preferences remove this animation. No additional animation vocabulary is implemented.
+Horizontal tabs have 12px 14px padding, a transparent background and coral selected underline. Sidebar items are flat, left-aligned and regular-weight; selected items use soft with selected-nav text. Statement buttons wrap and use selected-statement with a blue border when pressed. Preserve current/pressed semantics.
 
-### Analytical displays
+### Panels, notices and results
 
-Metric strips use serif values, small descriptive labels and vertical separators. Forecast charts use green solid base lines and dashed terracotta scenario lines, with keyboard-focusable points and text descriptions. Exact forecast values remain available in a table. Histogram bars and fan bands have their own green tokens; their supporting tables expose counts and percentile data.
+Panels have a one-pixel line border, 6px corners and paper background. Metric strips and notices use the raised surface. Status text is 12px in an 8px 10px bordered container; error state pairs error-text with a negative border. Empty status elements disappear. Calculator inputs and outputs are readable fields and labelled results; code editors are not the normal calculation interface.
 
-Sensitivity cells are buttons that apply WACC and terminal-growth assumptions. Unsupported combinations say “Unavailable.” The equity bridge uses green and terracotta bars with a ruled total row. Tornado tracks show a muted-green range and an ink-colored base marker, with lower-input and higher-input values printed alongside.
+### Financial context and charts
 
-### Research rows and feedback
-
-Knowledge entries, saved runs and evidence entries use ruled rows rather than elevated cards. Workflow states use compact labels, with a distinct blocked treatment. Status messages use live-region semantics. Errors have a red text treatment, while stale-result notices use amber surfaces and explanatory text.
-
-Case changes mark displayed figures stale, disable exports and detach the prior evidence target. Simulation-setting edits mark the prior distribution stale and prevent saving it until rerun. Tab changes and resizing do not redraw a stale simulation as current. Macro and method edits replace the result message with a recalculation prompt. Keep these validity states attached to the affected result, not merely to the input control.
+Green candles close above their open; red candles close below. Wicks and bodies must use matching direction colors against dark gridlines. Chart labels use muted sans-serif text. Show source and display currencies explicitly: statement conversion is display-only, while valuation and calculators retain labelled source units. Normal calculator rates are percentages; beta and multiples are ratios. Keep these distinctions in nearby labels and help text, not color alone. Do not imply that a display currency selection changes source inputs or calculator denominations.
 
 ## Do's and Don'ts
 
-- **Do** reuse the existing serif/sans pairing, paper surfaces and ruled layout.
-- **Do** retain exact-value tables, text labels and keyboard-accessible chart data.
-- **Do** preserve series identity and clearly mark unavailable or stale outputs.
-- **Do** keep responsive tables and navigation scrollable inside the workspace.
-- **Don't** imply that a saved or simulated result reflects edited inputs before recalculation.
-- **Don't** use color alone to distinguish the base and scenario lines.
-- **Don't** introduce shadows or a new card hierarchy as though they were incumbent design tokens.
-- **Don't** treat this extracted documentation as evidence of an unrecorded user design approval.
+- **Do** preserve the original Valuation Lab wordmark and dark workspace identity.
+- **Do** use compact sans-serif controls, editable tables, tabular numbers and clear focus states.
+- **Do** keep units, source currencies, rate conventions and warning explanations visible.
+- **Do** implement and review the working interface directly; this direction is code-led.
+- **Don't** restore the rejected light editorial palette or serif display typography.
+- **Don't** substitute GitHub logos or branding for the original product identity.
+- **Don't** turn financial input into a code editor or hide meaning behind decorative charts.
