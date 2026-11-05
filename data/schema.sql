@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS schema_version (version INTEGER PRIMARY KEY);
+INSERT OR IGNORE INTO schema_version VALUES (1);
+CREATE TABLE IF NOT EXISTS sources (id TEXT PRIMARY KEY, payload TEXT NOT NULL CHECK(json_valid(payload)));
+CREATE TABLE IF NOT EXISTS skills (id TEXT PRIMARY KEY, domain TEXT NOT NULL, title TEXT NOT NULL, payload TEXT NOT NULL CHECK(json_valid(payload)));
+CREATE INDEX IF NOT EXISTS skills_domain ON skills(domain);
+CREATE TABLE IF NOT EXISTS runs (id TEXT PRIMARY KEY, created_at TEXT NOT NULL, input_hash TEXT NOT NULL, payload_hash TEXT NOT NULL, payload TEXT NOT NULL CHECK(json_valid(payload)));
+CREATE INDEX IF NOT EXISTS runs_created ON runs(created_at);
+CREATE TABLE IF NOT EXISTS evidence (id TEXT PRIMARY KEY, run_id TEXT NOT NULL REFERENCES runs(id), payload TEXT NOT NULL CHECK(json_valid(payload)));
+CREATE INDEX IF NOT EXISTS evidence_run ON evidence(run_id);
+CREATE TABLE IF NOT EXISTS data_snapshots (id TEXT PRIMARY KEY, created_at TEXT NOT NULL, provider TEXT NOT NULL, payload_hash TEXT NOT NULL, payload TEXT NOT NULL CHECK(json_valid(payload)));
+CREATE TABLE IF NOT EXISTS instruments (symbol TEXT NOT NULL, exchange TEXT NOT NULL, name TEXT NOT NULL, country TEXT, sector TEXT, industry TEXT, currency TEXT, delisted INTEGER NOT NULL, source_commit TEXT NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(symbol,exchange,source_commit));
+CREATE INDEX IF NOT EXISTS instrument_search ON instruments(country,sector,source_commit);
+CREATE TRIGGER IF NOT EXISTS immutable_run_update BEFORE UPDATE ON runs BEGIN SELECT RAISE(ABORT,'Runs are immutable; create a new run'); END;
+CREATE TRIGGER IF NOT EXISTS immutable_run_delete BEFORE DELETE ON runs BEGIN SELECT RAISE(ABORT,'Runs are immutable'); END;

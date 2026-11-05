@@ -1,3 +1,8 @@
-__pycache__/
 .venv/
 .env
+.env.*
+__pycache__/
+.pytest_cache/
+data/*.sqlite*
+.impeccable/review/
+test-results/

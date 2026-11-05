@@ -1,0 +1,156 @@
+[
+  {
+    "repo": "shiyu-coder/Kronos",
+    "url": "https://github.com/shiyu-coder/Kronos",
+    "commit": "67b630e67f6a18c9e9be918d9b4337c960db1e9a",
+    "reviewed_date": "2026-11-05",
+    "license": "MIT",
+    "role": "Experimental OHLCV forecasts; gated by walk-forward evaluation",
+    "integration": "optional predictor adapter; weights not installed",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "TauricResearch/TradingAgents",
+    "url": "https://github.com/TauricResearch/TradingAgents",
+    "commit": "9fa1196fffbcfd9de5146d2dd2869df84ab99838",
+    "reviewed_date": "2026-11-05",
+    "license": "Apache-2.0",
+    "role": "Bounded specialist review and bull/bear challenge",
+    "integration": "architecture/reference; independently implemented core",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "openbq-org/OpenBB",
+    "url": "https://github.com/openbq-org/OpenBB",
+    "commit": "2a392e890f6eb1f0f4e3a71742720af8f056333a",
+    "reviewed_date": "2026-11-05",
+    "license": "Apache-2.0 (LICENSE text; API NOASSERTION)",
+    "role": "Provider query/extract/normalize contracts",
+    "integration": "architecture/reference; independently implemented core",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "shashankvemuri/Finance",
+    "url": "https://github.com/shashankvemuri/Finance",
+    "commit": "20799035c34de202818afdefd13600d2594dbcd8",
+    "reviewed_date": "2026-11-05",
+    "license": "MIT",
+    "role": "Explicit calculation and backtest timing conventions",
+    "integration": "architecture/reference; independently implemented core",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "JerBouma/FinanceDatabase",
+    "url": "https://github.com/JerBouma/FinanceDatabase",
+    "commit": "35523e03ee411abe673e093aed09b2769c7a442c",
+    "reviewed_date": "2026-11-05",
+    "license": "MIT",
+    "role": "Pinned security master and peer discovery",
+    "integration": "implemented data import",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "JerBouma/FinanceToolkit",
+    "url": "https://github.com/JerBouma/FinanceToolkit",
+    "commit": "da43cc7813052252a84e8a91add3a837c6182bb2",
+    "reviewed_date": "2026-11-05",
+    "license": "MIT",
+    "role": "Transparent ratios and out-of-sample forecast checks",
+    "integration": "architecture/reference; independently implemented core",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE.txt"
+    ]
+  },
+  {
+    "repo": "domokane/FinancePy",
+    "url": "https://github.com/domokane/FinancePy",
+    "commit": "bcf606cc90c54bf3d846f40293c0c16871d05756",
+    "reviewed_date": "2026-11-05",
+    "license": "GPL-3.0-or-later",
+    "role": "Reference for instrument conventions; optional separately licensed runtime",
+    "integration": "reference only",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "halessi/DCF",
+    "url": "https://github.com/halessi/DCF",
+    "commit": "761c17cc89bf1f13d5e18ecf66361a849b660ae0",
+    "reviewed_date": "2026-11-05",
+    "license": "No license found in inspected tree",
+    "role": "Conceptual reference only; no license file found",
+    "integration": "reference only",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": []
+  },
+  {
+    "repo": "rollingSirius/equity-research-skill",
+    "url": "https://github.com/rollingSirius/equity-research-skill",
+    "commit": "3d94e64ff53b325d866ea4bff69ad81a5adca8f5",
+    "reviewed_date": "2026-11-05",
+    "license": "MIT",
+    "role": "Earnings quality, reverse valuation and falsifiable thesis",
+    "integration": "architecture/reference; independently implemented core",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "AI4Finance-Foundation/FinGPT",
+    "url": "https://github.com/AI4Finance-Foundation/FinGPT",
+    "commit": "ac5c5443fbeeafad801e7a3c188e4f24cfaad4d8",
+    "reviewed_date": "2026-11-05",
+    "license": "MIT",
+    "role": "Optional language-model adaptation and financial text extraction",
+    "integration": "architecture/reference; independently implemented core",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "AI4Finance-Foundation/FinRobot",
+    "url": "https://github.com/AI4Finance-Foundation/FinRobot",
+    "commit": "63e1884a42ea7b729551a5424b4bd6a65af636e0",
+    "reviewed_date": "2026-11-05",
+    "license": "Apache-2.0",
+    "role": "Typed research orchestration and deterministic valuation operators",
+    "integration": "architecture/reference; independently implemented core",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "joshuaulrich/quantmod",
+    "url": "https://github.com/joshuaulrich/quantmod",
+    "commit": "96eb06be53094d1ec89d798ca0fc65ebc46a0d57",
+    "reviewed_date": "2026-11-05",
+    "license": "GPL-3.0",
+    "role": "Reference for time-series ingestion/charting; optional R workflow",
+    "integration": "reference only",
+    "evaluation": "README, tree and representative implementation inspected; upstream suite not executed",
+    "files": [
+      "LICENSE"
+    ]
+  }
+]

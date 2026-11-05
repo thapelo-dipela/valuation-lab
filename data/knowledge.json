@@ -1,0 +1,1274 @@
+{
+  "version": "1.0.0",
+  "sources": [
+    {
+      "id": "cfa-fcff",
+      "publisher": "CFA Institute",
+      "publication_date": "2026",
+      "title": "Free Cash Flow Valuation",
+      "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/free-cash-flow-valuation",
+      "contribution": "Cash-flow definitions, discount-rate matching and staged valuation.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "cfa-ri",
+      "publisher": "CFA Institute",
+      "publication_date": "2026",
+      "title": "Residual Income Valuation",
+      "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/residual-income-valuation",
+      "contribution": "Equity charges, book value and accounting adjustments.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "cfa-process",
+      "publisher": "CFA Institute",
+      "publication_date": "2026",
+      "title": "Equity Valuation: Applications and Processes",
+      "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/equity-valuation-applications-and-processes",
+      "contribution": "Model selection and communicating a valuation conclusion.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "nyu-valuation",
+      "publisher": "Aswath Damodaran / NYU Stern",
+      "publication_date": null,
+      "title": "An Introduction to Valuation",
+      "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/background/valintro.htm",
+      "contribution": "Present value, relative pricing and contingent-claim distinctions.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "nyu-wacc",
+      "publisher": "Aswath Damodaran / NYU Stern",
+      "publication_date": "2026-01",
+      "title": "Cost of Equity and Capital (US)",
+      "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/wacc.html",
+      "contribution": "Dated industry cost-of-capital benchmarks; US data must not become South African defaults.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "asop56",
+      "publisher": "Actuarial Standards Board",
+      "publication_date": "2019-12",
+      "title": "ASOP 56: Modeling",
+      "url": "https://www.actuarialstandardsboard.org/asops/modeling-3/",
+      "contribution": "Model purpose, assumptions, validation and communication; US practice standard, not SA regulatory certification.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "sec-api",
+      "publisher": "US Securities and Exchange Commission",
+      "publication_date": "2024-06-06",
+      "title": "EDGAR Application Programming Interfaces",
+      "url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+      "contribution": "Public submissions and XBRL APIs, filing dates and units.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "world-bank",
+      "publisher": "World Bank",
+      "publication_date": null,
+      "title": "About the Indicators API Documentation",
+      "url": "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392",
+      "contribution": "Country indicators and metadata through the v2 API.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "imf",
+      "publisher": "International Monetary Fund",
+      "publication_date": null,
+      "title": "IMF Data APIs",
+      "url": "https://data.imf.org/en/Resource-Pages/IMF-API",
+      "contribution": "SDMX 2.1/3.0 data access; dataset metadata determines dimensions.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "sarb",
+      "publisher": "South African Reserve Bank",
+      "publication_date": null,
+      "title": "Online Statistical Query",
+      "url": "https://www.resbank.co.za/en/home/what-we-do/statistics/releases/online-statistical-query",
+      "contribution": "South African macroeconomic time series and download facility.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "w3c",
+      "publisher": "W3C Web Accessibility Initiative",
+      "publication_date": null,
+      "title": "Complex Images",
+      "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+      "contribution": "Text alternatives and detailed explanations for complex graphics.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "vega",
+      "publisher": "Vega-Lite maintainers",
+      "publication_date": null,
+      "title": "Selection Parameters",
+      "url": "https://vega.github.io/vega-lite/docs/selection.html",
+      "contribution": "Point and interval selections as interaction patterns.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "fpsb",
+      "publisher": "Financial Planning Standards Board",
+      "publication_date": null,
+      "title": "Standards for the Profession",
+      "url": "https://fpsb.org/standards-for-the-profession/",
+      "contribution": "Financial-planning competencies, practice and ethics; jurisdictional adaptation remains necessary.",
+      "accessed_date": "2026-11-04",
+      "authority": "primary",
+      "verification": "Publisher page opened during research",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-kronos",
+      "publisher": "shiyu-coder/Kronos",
+      "publication_date": null,
+      "title": "Kronos repository review",
+      "url": "https://github.com/shiyu-coder/Kronos/tree/67b630e67f6a18c9e9be918d9b4337c960db1e9a",
+      "contribution": "Experimental OHLCV forecasts; gated by walk-forward evaluation",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-tradingagents",
+      "publisher": "TauricResearch/TradingAgents",
+      "publication_date": null,
+      "title": "TradingAgents repository review",
+      "url": "https://github.com/TauricResearch/TradingAgents/tree/9fa1196fffbcfd9de5146d2dd2869df84ab99838",
+      "contribution": "Bounded specialist review and bull/bear challenge",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-openbb",
+      "publisher": "openbq-org/OpenBB",
+      "publication_date": null,
+      "title": "OpenBB repository review",
+      "url": "https://github.com/openbq-org/OpenBB/tree/2a392e890f6eb1f0f4e3a71742720af8f056333a",
+      "contribution": "Provider query/extract/normalize contracts",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-finance",
+      "publisher": "shashankvemuri/Finance",
+      "publication_date": null,
+      "title": "Finance repository review",
+      "url": "https://github.com/shashankvemuri/Finance/tree/20799035c34de202818afdefd13600d2594dbcd8",
+      "contribution": "Explicit calculation and backtest timing conventions",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-financedatabase",
+      "publisher": "JerBouma/FinanceDatabase",
+      "publication_date": null,
+      "title": "FinanceDatabase repository review",
+      "url": "https://github.com/JerBouma/FinanceDatabase/tree/35523e03ee411abe673e093aed09b2769c7a442c",
+      "contribution": "Pinned security master and peer discovery",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-financetoolkit",
+      "publisher": "JerBouma/FinanceToolkit",
+      "publication_date": null,
+      "title": "FinanceToolkit repository review",
+      "url": "https://github.com/JerBouma/FinanceToolkit/tree/da43cc7813052252a84e8a91add3a837c6182bb2",
+      "contribution": "Transparent ratios and out-of-sample forecast checks",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-financepy",
+      "publisher": "domokane/FinancePy",
+      "publication_date": null,
+      "title": "FinancePy repository review",
+      "url": "https://github.com/domokane/FinancePy/tree/bcf606cc90c54bf3d846f40293c0c16871d05756",
+      "contribution": "Reference for instrument conventions; optional separately licensed runtime",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-dcf",
+      "publisher": "halessi/DCF",
+      "publication_date": null,
+      "title": "DCF repository review",
+      "url": "https://github.com/halessi/DCF/tree/761c17cc89bf1f13d5e18ecf66361a849b660ae0",
+      "contribution": "Conceptual reference only; no license file found",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-equity-research-skill",
+      "publisher": "rollingSirius/equity-research-skill",
+      "publication_date": null,
+      "title": "equity-research-skill repository review",
+      "url": "https://github.com/rollingSirius/equity-research-skill/tree/3d94e64ff53b325d866ea4bff69ad81a5adca8f5",
+      "contribution": "Earnings quality, reverse valuation and falsifiable thesis",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-fingpt",
+      "publisher": "AI4Finance-Foundation/FinGPT",
+      "publication_date": null,
+      "title": "FinGPT repository review",
+      "url": "https://github.com/AI4Finance-Foundation/FinGPT/tree/ac5c5443fbeeafad801e7a3c188e4f24cfaad4d8",
+      "contribution": "Optional language-model adaptation and financial text extraction",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-finrobot",
+      "publisher": "AI4Finance-Foundation/FinRobot",
+      "publication_date": null,
+      "title": "FinRobot repository review",
+      "url": "https://github.com/AI4Finance-Foundation/FinRobot/tree/63e1884a42ea7b729551a5424b4bd6a65af636e0",
+      "contribution": "Typed research orchestration and deterministic valuation operators",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    },
+    {
+      "id": "repo-quantmod",
+      "publisher": "joshuaulrich/quantmod",
+      "publication_date": null,
+      "title": "quantmod repository review",
+      "url": "https://github.com/joshuaulrich/quantmod/tree/96eb06be53094d1ec89d798ca0fc65ebc46a0d57",
+      "contribution": "Reference for time-series ingestion/charting; optional R workflow",
+      "accessed_date": "2026-11-05",
+      "authority": "primary implementation",
+      "verification": "Repository code and README inspected at pinned commit",
+      "rights": "Link and original summary only; check provider terms before bulk redistribution"
+    }
+  ],
+  "skills": [
+    {
+      "id": "quantitative-research.reverse",
+      "domain": "quantitative-research",
+      "title": "Market-implied reverse DCF",
+      "role": "Quantitative research architect",
+      "formula": "Search growth, operating margin or WACC for model price equal to observed price; report roots and invalid intervals.",
+      "implementation": "research_engine.reverse_dcf",
+      "status": "implemented",
+      "required_inputs": "Point-in-time evidence, exact code/model revisions, valuation inputs, market price, dated OHLCV observations, adjustment basis and hypothesis.",
+      "assumptions": "Fixed remaining inputs, explicit bounds, base FCFF only.",
+      "validation": "Recover a known input from its computed price; report out-of-range and multiple solutions instead of extrapolating.",
+      "failure_modes": "Price forecasts cannot silently become intrinsic-value assumptions. Agent consensus is not independent evidence. Optional model weights and APIs are not installed or invoked by default.",
+      "steps": [
+        "Separate instrument discovery, evidence acquisition, deterministic valuation, forecast experiments and narrative synthesis.",
+        "Identify market-implied assumptions with bounded reverse valuation; test earnings/cash conversion before interpreting value.",
+        "Evaluate forecasts using rolling training cutoffs and a random-walk benchmark; audit pretrained training overlap separately.",
+        "Require bull and bear cases to specify evidence, numerical driver changes and falsification dates; unresolved disagreement remains visible."
+      ],
+      "source_ids": [
+        "repo-kronos",
+        "repo-tradingagents",
+        "repo-openbb",
+        "repo-financedatabase",
+        "repo-financetoolkit",
+        "repo-finrobot",
+        "repo-equity-research-skill",
+        "repo-finance",
+        "repo-fingpt",
+        "repo-financepy",
+        "repo-dcf",
+        "repo-quantmod"
+      ],
+      "skill_path": "skills/quantitative-research/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "quantitative-research.quality",
+      "domain": "quantitative-research",
+      "title": "Earnings and accrual quality",
+      "role": "Quantitative research architect",
+      "formula": "Accrual ratio = (NI-CFO)/average assets; compare receivable days and cash conversion.",
+      "implementation": "research_engine.earnings_quality",
+      "status": "implemented",
+      "required_inputs": "Point-in-time evidence, exact code/model revisions, valuation inputs, market price, dated OHLCV observations, adjustment basis and hypothesis.",
+      "assumptions": "Comparable annual periods; SBC adjustment is an economic proxy.",
+      "validation": "Missing/invalid denominators cannot become zero ratios; screens do not establish fraud.",
+      "failure_modes": "Price forecasts cannot silently become intrinsic-value assumptions. Agent consensus is not independent evidence. Optional model weights and APIs are not installed or invoked by default.",
+      "steps": [
+        "Separate instrument discovery, evidence acquisition, deterministic valuation, forecast experiments and narrative synthesis.",
+        "Identify market-implied assumptions with bounded reverse valuation; test earnings/cash conversion before interpreting value.",
+        "Evaluate forecasts using rolling training cutoffs and a random-walk benchmark; audit pretrained training overlap separately.",
+        "Require bull and bear cases to specify evidence, numerical driver changes and falsification dates; unresolved disagreement remains visible."
+      ],
+      "source_ids": [
+        "repo-kronos",
+        "repo-tradingagents",
+        "repo-openbb",
+        "repo-financedatabase",
+        "repo-financetoolkit",
+        "repo-finrobot",
+        "repo-equity-research-skill",
+        "repo-finance",
+        "repo-fingpt",
+        "repo-financepy",
+        "repo-dcf",
+        "repo-quantmod"
+      ],
+      "skill_path": "skills/quantitative-research/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "quantitative-research.scenario-weights",
+      "domain": "quantitative-research",
+      "title": "Probability-weighted valuation",
+      "role": "Quantitative research architect",
+      "formula": "Expected price = sum(probability \u00d7 scenario value), with matching currency, date, company and share basis.",
+      "implementation": "research_engine.scenario_ensemble",
+      "status": "implemented",
+      "required_inputs": "Point-in-time evidence, exact code/model revisions, valuation inputs, market price, dated OHLCV observations, adjustment basis and hypothesis.",
+      "assumptions": "Analyst-supplied probabilities sum to one.",
+      "validation": "Unsupported positive-weight cases block aggregation; never silently rescale surviving cases.",
+      "failure_modes": "Price forecasts cannot silently become intrinsic-value assumptions. Agent consensus is not independent evidence. Optional model weights and APIs are not installed or invoked by default.",
+      "steps": [
+        "Separate instrument discovery, evidence acquisition, deterministic valuation, forecast experiments and narrative synthesis.",
+        "Identify market-implied assumptions with bounded reverse valuation; test earnings/cash conversion before interpreting value.",
+        "Evaluate forecasts using rolling training cutoffs and a random-walk benchmark; audit pretrained training overlap separately.",
+        "Require bull and bear cases to specify evidence, numerical driver changes and falsification dates; unresolved disagreement remains visible."
+      ],
+      "source_ids": [
+        "repo-kronos",
+        "repo-tradingagents",
+        "repo-openbb",
+        "repo-financedatabase",
+        "repo-financetoolkit",
+        "repo-finrobot",
+        "repo-equity-research-skill",
+        "repo-finance",
+        "repo-fingpt",
+        "repo-financepy",
+        "repo-dcf",
+        "repo-quantmod"
+      ],
+      "skill_path": "skills/quantitative-research/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "quantitative-research.walk-forward",
+      "domain": "quantitative-research",
+      "title": "Forecast evaluation and Kronos boundary",
+      "role": "Quantitative research architect",
+      "formula": "Expanding-window training with non-overlapping holdouts; MAE/RMSE and skill versus random walk.",
+      "implementation": "forecasting.evaluate_forecast; forecasting.kronos_callback",
+      "status": "implemented",
+      "required_inputs": "Point-in-time evidence, exact code/model revisions, valuation inputs, market price, dated OHLCV observations, adjustment basis and hypothesis.",
+      "assumptions": "Chronological OHLCV, explicit price adjustments; upstream model loaded separately.",
+      "validation": "No test observations passed to predictor; full-weight pretraining overlap requires independent audit.",
+      "failure_modes": "Price forecasts cannot silently become intrinsic-value assumptions. Agent consensus is not independent evidence. Optional model weights and APIs are not installed or invoked by default.",
+      "steps": [
+        "Separate instrument discovery, evidence acquisition, deterministic valuation, forecast experiments and narrative synthesis.",
+        "Identify market-implied assumptions with bounded reverse valuation; test earnings/cash conversion before interpreting value.",
+        "Evaluate forecasts using rolling training cutoffs and a random-walk benchmark; audit pretrained training overlap separately.",
+        "Require bull and bear cases to specify evidence, numerical driver changes and falsification dates; unresolved disagreement remains visible."
+      ],
+      "source_ids": [
+        "repo-kronos",
+        "repo-tradingagents",
+        "repo-openbb",
+        "repo-financedatabase",
+        "repo-financetoolkit",
+        "repo-finrobot",
+        "repo-equity-research-skill",
+        "repo-finance",
+        "repo-fingpt",
+        "repo-financepy",
+        "repo-dcf",
+        "repo-quantmod"
+      ],
+      "skill_path": "skills/quantitative-research/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "quantitative-research.committee",
+      "domain": "quantitative-research",
+      "title": "Specialist research and challenge",
+      "role": "Quantitative research architect",
+      "formula": "Evidence \u2192 normalization \u2192 deterministic models \u2192 bull/bear challenge \u2192 risk review \u2192 synthesis.",
+      "implementation": "research_engine.specialist_review",
+      "status": "implemented",
+      "required_inputs": "Point-in-time evidence, exact code/model revisions, valuation inputs, market price, dated OHLCV observations, adjustment basis and hypothesis.",
+      "assumptions": "Returns a deterministic task plan; MCP client supplies any language model.",
+      "validation": "No invented role findings or automatic buy/sell consensus; numerical statements come from the engine.",
+      "failure_modes": "Price forecasts cannot silently become intrinsic-value assumptions. Agent consensus is not independent evidence. Optional model weights and APIs are not installed or invoked by default.",
+      "steps": [
+        "Separate instrument discovery, evidence acquisition, deterministic valuation, forecast experiments and narrative synthesis.",
+        "Identify market-implied assumptions with bounded reverse valuation; test earnings/cash conversion before interpreting value.",
+        "Evaluate forecasts using rolling training cutoffs and a random-walk benchmark; audit pretrained training overlap separately.",
+        "Require bull and bear cases to specify evidence, numerical driver changes and falsification dates; unresolved disagreement remains visible."
+      ],
+      "source_ids": [
+        "repo-kronos",
+        "repo-tradingagents",
+        "repo-openbb",
+        "repo-financedatabase",
+        "repo-financetoolkit",
+        "repo-finrobot",
+        "repo-equity-research-skill",
+        "repo-finance",
+        "repo-fingpt",
+        "repo-financepy",
+        "repo-dcf",
+        "repo-quantmod"
+      ],
+      "skill_path": "skills/quantitative-research/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfa-equity.fcff",
+      "domain": "cfa-equity",
+      "title": "Enterprise DCF",
+      "role": "Investment analyst",
+      "formula": "FCFF = EBIT - operating cash tax + depreciation - capex - change in operating NWC; EV = discounted FCFF + discounted terminal value.",
+      "implementation": "engine.value",
+      "status": "implemented",
+      "required_inputs": "Dated statements, forecast drivers, valuation purpose, currency, cost of capital, claims and peer definitions.",
+      "assumptions": "Cash flows and WACC share currency, inflation and operating perimeter.",
+      "validation": "Reconcile statements; compare a hand-calculated perpetuity and test discount-rate monotonicity.",
+      "failure_modes": "Do not apply the operating-company FCFF model to deposit-funded banks, insurers, negative terminal earnings or distressed optional equity without a separate model.",
+      "steps": [
+        "Select enterprise or equity cash flows before choosing a discount rate.",
+        "Normalize revenue, operating costs, working capital and reinvestment; reconcile the opening balance sheet.",
+        "Link growth to reinvestment and return on capital; challenge terminal margins and duration of advantage.",
+        "Calculate at least one economically appropriate cross-check, then explain disagreement instead of averaging incompatible values."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "cfa-ri",
+        "cfa-process",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/cfa-equity/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfa-equity.terminal",
+      "domain": "cfa-equity",
+      "title": "Terminal economics",
+      "role": "Investment analyst",
+      "formula": "Terminal FCFF = next-year NOPAT \u00d7 (1 - g / ROIC).",
+      "implementation": "engine.dcf",
+      "status": "implemented",
+      "required_inputs": "Dated statements, forecast drivers, valuation purpose, currency, cost of capital, claims and peer definitions.",
+      "assumptions": "WACC > g; ROIC > g; terminal EBIT positive.",
+      "validation": "Growth at zero produces no growth reinvestment; higher growth is not automatically value accretive.",
+      "failure_modes": "Do not apply the operating-company FCFF model to deposit-funded banks, insurers, negative terminal earnings or distressed optional equity without a separate model.",
+      "steps": [
+        "Select enterprise or equity cash flows before choosing a discount rate.",
+        "Normalize revenue, operating costs, working capital and reinvestment; reconcile the opening balance sheet.",
+        "Link growth to reinvestment and return on capital; challenge terminal margins and duration of advantage.",
+        "Calculate at least one economically appropriate cross-check, then explain disagreement instead of averaging incompatible values."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "cfa-ri",
+        "cfa-process",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/cfa-equity/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfa-equity.fcfe",
+      "domain": "cfa-equity",
+      "title": "Equity cash-flow valuation",
+      "role": "Investment analyst",
+      "formula": "FCFE = FCFF - interest \u00d7 (1-tax) + net borrowing; discount at cost of equity.",
+      "implementation": "advanced.cashflow_method",
+      "status": "implemented",
+      "required_inputs": "Dated statements, forecast drivers, valuation purpose, currency, cost of capital, claims and peer definitions.",
+      "assumptions": "Analyst supplies equity cash flows and next-period terminal FCFE.",
+      "validation": "Do not subtract debt again from equity value; reconcile financing policy.",
+      "failure_modes": "Do not apply the operating-company FCFF model to deposit-funded banks, insurers, negative terminal earnings or distressed optional equity without a separate model.",
+      "steps": [
+        "Select enterprise or equity cash flows before choosing a discount rate.",
+        "Normalize revenue, operating costs, working capital and reinvestment; reconcile the opening balance sheet.",
+        "Link growth to reinvestment and return on capital; challenge terminal margins and duration of advantage.",
+        "Calculate at least one economically appropriate cross-check, then explain disagreement instead of averaging incompatible values."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "cfa-ri",
+        "cfa-process",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/cfa-equity/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfa-equity.residual",
+      "domain": "cfa-equity",
+      "title": "Residual income",
+      "role": "Investment analyst",
+      "formula": "RI_t = NI_t - k_e \u00d7 BV_(t-1); equity = BV_0 + PV(RI).",
+      "implementation": "advanced.cashflow_method",
+      "status": "implemented",
+      "required_inputs": "Dated statements, forecast drivers, valuation purpose, currency, cost of capital, claims and peer definitions.",
+      "assumptions": "Clean-surplus accounting, adjusted book equity and defensible continuing RI.",
+      "validation": "Zero RI must return opening book equity; no automatic conversion from noisy accounting earnings.",
+      "failure_modes": "Do not apply the operating-company FCFF model to deposit-funded banks, insurers, negative terminal earnings or distressed optional equity without a separate model.",
+      "steps": [
+        "Select enterprise or equity cash flows before choosing a discount rate.",
+        "Normalize revenue, operating costs, working capital and reinvestment; reconcile the opening balance sheet.",
+        "Link growth to reinvestment and return on capital; challenge terminal margins and duration of advantage.",
+        "Calculate at least one economically appropriate cross-check, then explain disagreement instead of averaging incompatible values."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "cfa-ri",
+        "cfa-process",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/cfa-equity/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfa-equity.dividends",
+      "domain": "cfa-equity",
+      "title": "Dividend valuation",
+      "role": "Investment analyst",
+      "formula": "Equity = PV(distributions) + PV(first terminal dividend / (k_e-g)).",
+      "implementation": "advanced.cashflow_method",
+      "status": "implemented",
+      "required_inputs": "Dated statements, forecast drivers, valuation purpose, currency, cost of capital, claims and peer definitions.",
+      "assumptions": "Distributions reflect sustainable payout capacity.",
+      "validation": "Verify first terminal dividend is not grown twice.",
+      "failure_modes": "Do not apply the operating-company FCFF model to deposit-funded banks, insurers, negative terminal earnings or distressed optional equity without a separate model.",
+      "steps": [
+        "Select enterprise or equity cash flows before choosing a discount rate.",
+        "Normalize revenue, operating costs, working capital and reinvestment; reconcile the opening balance sheet.",
+        "Link growth to reinvestment and return on capital; challenge terminal margins and duration of advantage.",
+        "Calculate at least one economically appropriate cross-check, then explain disagreement instead of averaging incompatible values."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "cfa-ri",
+        "cfa-process",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/cfa-equity/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfa-equity.peers",
+      "domain": "cfa-equity",
+      "title": "Comparable companies",
+      "role": "Investment analyst",
+      "formula": "Eligible peer EV / forward EBITDA; median and quartiles; subject forward EBITDA \u00d7 multiple.",
+      "implementation": "engine.value; advanced.diagnostics",
+      "status": "implemented",
+      "required_inputs": "Dated statements, forecast drivers, valuation purpose, currency, cost of capital, claims and peer definitions.",
+      "assumptions": "Align currency, leases, accounting perimeter and forecast periods.",
+      "validation": "Exclude non-positive EV or EBITDA; never silently remove an outlier merely to improve the answer.",
+      "failure_modes": "Do not apply the operating-company FCFF model to deposit-funded banks, insurers, negative terminal earnings or distressed optional equity without a separate model.",
+      "steps": [
+        "Select enterprise or equity cash flows before choosing a discount rate.",
+        "Normalize revenue, operating costs, working capital and reinvestment; reconcile the opening balance sheet.",
+        "Link growth to reinvestment and return on capital; challenge terminal margins and duration of advantage.",
+        "Calculate at least one economically appropriate cross-check, then explain disagreement instead of averaging incompatible values."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "cfa-ri",
+        "cfa-process",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/cfa-equity/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfa-equity.economic-profit",
+      "domain": "cfa-equity",
+      "title": "Return on invested capital",
+      "role": "Investment analyst",
+      "formula": "ROIC = NOPAT / opening operating invested capital; economic profit = NOPAT - WACC \u00d7 opening operating invested capital.",
+      "implementation": "advanced.diagnostics",
+      "status": "implemented",
+      "required_inputs": "Dated statements, forecast drivers, valuation purpose, currency, cost of capital, claims and peer definitions.",
+      "assumptions": "Capital excludes excess cash; non-positive capital produces an unavailable ratio.",
+      "validation": "At ROIC equal to WACC, economic profit equals zero; use the same opening capital convention.",
+      "failure_modes": "Do not apply the operating-company FCFF model to deposit-funded banks, insurers, negative terminal earnings or distressed optional equity without a separate model.",
+      "steps": [
+        "Select enterprise or equity cash flows before choosing a discount rate.",
+        "Normalize revenue, operating costs, working capital and reinvestment; reconcile the opening balance sheet.",
+        "Link growth to reinvestment and return on capital; challenge terminal margins and duration of advantage.",
+        "Calculate at least one economically appropriate cross-check, then explain disagreement instead of averaging incompatible values."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "cfa-ri",
+        "cfa-process",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/cfa-equity/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfa-equity.funding-gap",
+      "domain": "cfa-equity",
+      "title": "Financing capacity",
+      "role": "Investment analyst",
+      "formula": "Roll cash forward using operating cash flow less capital expenditure; identify negative projected cash.",
+      "implementation": "engine.project; advanced.simulate",
+      "status": "implemented",
+      "required_inputs": "Dated statements, forecast drivers, valuation purpose, currency, cost of capital, claims and peer definitions.",
+      "assumptions": "Fixed debt, no distributions or new financing; a gap is not automatically resolved with a debt plug.",
+      "validation": "Every forecast balances; report funding needs separately from a model equity value.",
+      "failure_modes": "Do not apply the operating-company FCFF model to deposit-funded banks, insurers, negative terminal earnings or distressed optional equity without a separate model.",
+      "steps": [
+        "Select enterprise or equity cash flows before choosing a discount rate.",
+        "Normalize revenue, operating costs, working capital and reinvestment; reconcile the opening balance sheet.",
+        "Link growth to reinvestment and return on capital; challenge terminal margins and duration of advantage.",
+        "Calculate at least one economically appropriate cross-check, then explain disagreement instead of averaging incompatible values."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "cfa-ri",
+        "cfa-process",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/cfa-equity/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "capital-markets.wacc",
+      "domain": "capital-markets",
+      "title": "Bottom-up WACC",
+      "role": "Capital-cost analyst",
+      "formula": "beta_L = beta_U \u00d7 [1+(1-T)D/E]; k_e = r_f + beta_L ERP + exposure \u00d7 CRP; WACC = E/V k_e + D/V k_d(1-T).",
+      "implementation": "advanced.capital_cost",
+      "status": "implemented",
+      "required_inputs": "Currency-matched risk-free curve, market equity premium, operating beta, market-value leverage, debt spread, tax capacity and country exposure.",
+      "assumptions": "Zero debt beta, usable tax shield and explicit country-risk treatment.",
+      "validation": "All-equity funding must return cost of equity; reject 100% debt weight.",
+      "failure_modes": "Never use US industry WACC as a ZAR discount rate or mix book debt weights with market equity weights without explanation.",
+      "steps": [
+        "Date every market input and separate currency risk from country exposure.",
+        "Unlever comparable betas consistently; select an operating beta and relever to target capital structure.",
+        "Calculate cost of equity and after-tax debt cost using market-value weights.",
+        "Compare with industry benchmarks as a reasonableness check, not an automatic calibration."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "nyu-wacc",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/capital-markets/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "capital-markets.inflation",
+      "domain": "capital-markets",
+      "title": "Nominal and real consistency",
+      "role": "Capital-cost analyst",
+      "formula": "1 + nominal rate = (1 + real rate) \u00d7 (1 + expected inflation).",
+      "implementation": "review workflow",
+      "status": "review-only",
+      "required_inputs": "Currency-matched risk-free curve, market equity premium, operating beta, market-value leverage, debt spread, tax capacity and country exposure.",
+      "assumptions": "Match currency, term and inflation basis across rates and cash flows.",
+      "validation": "Do not discount real cash flows using nominal WACC; this is a review rule, not automatic FX valuation.",
+      "failure_modes": "Never use US industry WACC as a ZAR discount rate or mix book debt weights with market equity weights without explanation.",
+      "steps": [
+        "Date every market input and separate currency risk from country exposure.",
+        "Unlever comparable betas consistently; select an operating beta and relever to target capital structure.",
+        "Calculate cost of equity and after-tax debt cost using market-value weights.",
+        "Compare with industry benchmarks as a reasonableness check, not an automatic calibration."
+      ],
+      "source_ids": [
+        "cfa-fcff",
+        "nyu-wacc",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/capital-markets/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "investment-banking.apv",
+      "domain": "investment-banking",
+      "title": "Adjusted present value",
+      "role": "Investment banker",
+      "formula": "APV = PV(unlevered cash flows) + PV(explicit tax shields) - PV(distress costs).",
+      "implementation": "advanced.cashflow_method",
+      "status": "implemented",
+      "required_inputs": "Deal perimeter, standalone cash flows, funding schedule, debt-like claims, control assumptions and separately evidenced synergies.",
+      "assumptions": "Unlevered discount rate; explicit shield timing and separate shield risk.",
+      "validation": "With zero shields and distress cost, APV equals unlevered DCF. Terminal tax shields are not inferred.",
+      "failure_modes": "No automatic control premium, synergy uplift or LBO bid ceiling. Those require separately modeled debt schedules, integration costs and return requirements.",
+      "steps": [
+        "Separate standalone enterprise value from transaction price and buyer-specific synergies.",
+        "Build a dated financing schedule and verify tax shield usability.",
+        "Use APV when financing effects need explicit separation; disclose the tax shield discount convention.",
+        "Bridge enterprise to equity and explain model ranges; do not blend control and minority bases."
+      ],
+      "source_ids": [
+        "cfa-process",
+        "nyu-valuation",
+        "cfa-fcff"
+      ],
+      "skill_path": "skills/investment-banking/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "investment-banking.bridge",
+      "domain": "investment-banking",
+      "title": "Enterprise-to-equity bridge",
+      "role": "Investment banker",
+      "formula": "Equity = EV + excess cash + non-operating assets - debt - other claims.",
+      "implementation": "engine.bridge",
+      "status": "implemented",
+      "required_inputs": "Deal perimeter, standalone cash flows, funding schedule, debt-like claims, control assumptions and separately evidenced synergies.",
+      "assumptions": "Same perimeter and date; no duplicate cash or claim adjustments.",
+      "validation": "One extra unit of debt reduces equity by one; verify all debt-like claims.",
+      "failure_modes": "No automatic control premium, synergy uplift or LBO bid ceiling. Those require separately modeled debt schedules, integration costs and return requirements.",
+      "steps": [
+        "Separate standalone enterprise value from transaction price and buyer-specific synergies.",
+        "Build a dated financing schedule and verify tax shield usability.",
+        "Use APV when financing effects need explicit separation; disclose the tax shield discount convention.",
+        "Bridge enterprise to equity and explain model ranges; do not blend control and minority bases."
+      ],
+      "source_ids": [
+        "cfa-process",
+        "nyu-valuation",
+        "cfa-fcff"
+      ],
+      "skill_path": "skills/investment-banking/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "investment-banking.synergy",
+      "domain": "investment-banking",
+      "title": "Transaction synergies",
+      "role": "Investment banker",
+      "formula": "Incremental value = PV(after-tax incremental cash flow - integration costs - incremental reinvestment).",
+      "implementation": "review workflow",
+      "status": "review-only",
+      "required_inputs": "Deal perimeter, standalone cash flows, funding schedule, debt-like claims, control assumptions and separately evidenced synergies.",
+      "assumptions": "Evidence for timing, overlap, probability and execution costs.",
+      "validation": "Keep synergy value outside standalone DCF until explicit incremental cash flows are supplied.",
+      "failure_modes": "No automatic control premium, synergy uplift or LBO bid ceiling. Those require separately modeled debt schedules, integration costs and return requirements.",
+      "steps": [
+        "Separate standalone enterprise value from transaction price and buyer-specific synergies.",
+        "Build a dated financing schedule and verify tax shield usability.",
+        "Use APV when financing effects need explicit separation; disclose the tax shield discount convention.",
+        "Bridge enterprise to equity and explain model ranges; do not blend control and minority bases."
+      ],
+      "source_ids": [
+        "cfa-process",
+        "nyu-valuation",
+        "cfa-fcff"
+      ],
+      "skill_path": "skills/investment-banking/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "economics.transmission",
+      "domain": "economics",
+      "title": "Macro transmission",
+      "role": "Economist",
+      "formula": "Growth shift = GDP shock \u00d7 revenue beta + inflation shock \u00d7 price pass-through; margin shift = -import share \u00d7 FX depreciation.",
+      "implementation": "advanced.macro_case",
+      "status": "implemented",
+      "required_inputs": "Country, observation dates, publication vintages, inflation, real growth, policy rates, FX exposure and company elasticities.",
+      "assumptions": "Percentage-point growth and policy shocks; FX percent change; permanent forecast shift.",
+      "validation": "Zero shocks reproduce baseline; invalid aggregate drivers fail validation.",
+      "failure_modes": "A macro series is context, not a company growth forecast. Linear elasticities are analyst assumptions, not estimated causal effects.",
+      "steps": [
+        "Construct a country and sector baseline from official observations; distinguish historical releases from forecasts.",
+        "Write a causal hypothesis linking each shock to volume, prices, import costs, financing and reinvestment.",
+        "Calibrate exposure and pass-through from company evidence; specify lag and persistence outside the simplified scenario if needed.",
+        "Run shocks separately and jointly, inspect double counting and disclose coefficient uncertainty."
+      ],
+      "source_ids": [
+        "world-bank",
+        "imf",
+        "sarb",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/economics/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "economics.vintages",
+      "domain": "economics",
+      "title": "Vintage-aware macro evidence",
+      "role": "Economist",
+      "formula": "Record observation period, retrieval date and publication date; prohibit releases after valuation date in historical analysis.",
+      "implementation": "providers.world_bank; workflow.review_workflow",
+      "status": "implemented",
+      "required_inputs": "Country, observation dates, publication vintages, inflation, real growth, policy rates, FX exposure and company elasticities.",
+      "assumptions": "Current World Bank snapshots are not historical release vintages.",
+      "validation": "Label unavailable vintage data; never claim an absence of look-ahead bias from observation year alone.",
+      "failure_modes": "A macro series is context, not a company growth forecast. Linear elasticities are analyst assumptions, not estimated causal effects.",
+      "steps": [
+        "Construct a country and sector baseline from official observations; distinguish historical releases from forecasts.",
+        "Write a causal hypothesis linking each shock to volume, prices, import costs, financing and reinvestment.",
+        "Calibrate exposure and pass-through from company evidence; specify lag and persistence outside the simplified scenario if needed.",
+        "Run shocks separately and jointly, inspect double counting and disclose coefficient uncertainty."
+      ],
+      "source_ids": [
+        "world-bank",
+        "imf",
+        "sarb",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/economics/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "economics.regime",
+      "domain": "economics",
+      "title": "Regime and structural challenge",
+      "role": "Economist",
+      "formula": "Compare demand, inflation, policy, commodity and FX narratives; trace each to a cash-flow mechanism.",
+      "implementation": "review workflow",
+      "status": "review-only",
+      "required_inputs": "Country, observation dates, publication vintages, inflation, real growth, policy rates, FX exposure and company elasticities.",
+      "assumptions": "Scenario probabilities require evidence and are not generated from labels.",
+      "validation": "Check internal consistency: high nominal growth with unchanged real reinvestment needs explanation.",
+      "failure_modes": "A macro series is context, not a company growth forecast. Linear elasticities are analyst assumptions, not estimated causal effects.",
+      "steps": [
+        "Construct a country and sector baseline from official observations; distinguish historical releases from forecasts.",
+        "Write a causal hypothesis linking each shock to volume, prices, import costs, financing and reinvestment.",
+        "Calibrate exposure and pass-through from company evidence; specify lag and persistence outside the simplified scenario if needed.",
+        "Run shocks separately and jointly, inspect double counting and disclose coefficient uncertainty."
+      ],
+      "source_ids": [
+        "world-bank",
+        "imf",
+        "sarb",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/economics/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "actuarial-risk.simulation",
+      "domain": "actuarial-risk",
+      "title": "Correlated valuation simulation",
+      "role": "Actuarial model reviewer",
+      "formula": "Draw correlated growth, margin and WACC parameters; run the same deterministic FCFF engine for every accepted draw.",
+      "implementation": "advanced.simulate",
+      "status": "implemented",
+      "required_inputs": "Distribution calibration, dependence, exposure horizon, survival probabilities, payment timing and spot curve.",
+      "assumptions": "PSD correlation; bounded inputs; constant parameter draw across years; base case only.",
+      "validation": "Seed reproducibility, zero-volatility collapse and rejection disclosure; do not clip invalid tails.",
+      "failure_modes": "Illustrative normal shocks are not market-implied probabilities. Survival PV is not an insurance reserve or solvency capital model.",
+      "steps": [
+        "State purpose and material risks before selecting deterministic or stochastic form.",
+        "Separate process risk, parameter uncertainty and structural uncertainty; the shipped simulation covers parameter uncertainty only.",
+        "Validate correlation, use a recorded random seed, and report rejected draws and conditional sample size.",
+        "Challenge tails, funding gaps and sensitivity to model form; preserve independent validation evidence."
+      ],
+      "source_ids": [
+        "asop56",
+        "cfa-fcff",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/actuarial-risk/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "actuarial-risk.tail",
+      "domain": "actuarial-risk",
+      "title": "Downside and tail risk",
+      "role": "Actuarial model reviewer",
+      "formula": "Loss = reference price - model value; empirical 95% VaR and mean of worst ceil(5% \u00d7 n) losses.",
+      "implementation": "advanced.simulate",
+      "status": "implemented",
+      "required_inputs": "Distribution calibration, dependence, exposure horizon, survival probabilities, payment timing and spot curve.",
+      "assumptions": "Risk conditional on accepted model draws; loss can be negative when all draws imply gains.",
+      "validation": "Expected shortfall must be at least VaR within empirical quantile conventions; report reference-price units.",
+      "failure_modes": "Illustrative normal shocks are not market-implied probabilities. Survival PV is not an insurance reserve or solvency capital model.",
+      "steps": [
+        "State purpose and material risks before selecting deterministic or stochastic form.",
+        "Separate process risk, parameter uncertainty and structural uncertainty; the shipped simulation covers parameter uncertainty only.",
+        "Validate correlation, use a recorded random seed, and report rejected draws and conditional sample size.",
+        "Challenge tails, funding gaps and sensitivity to model form; preserve independent validation evidence."
+      ],
+      "source_ids": [
+        "asop56",
+        "cfa-fcff",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/actuarial-risk/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "actuarial-risk.liability",
+      "domain": "actuarial-risk",
+      "title": "Survival-contingent liability",
+      "role": "Actuarial model reviewer",
+      "formula": "PV = sum(payment_t \u00d7 unconditional survival_t / (1+spot_t)^t).",
+      "implementation": "advanced.liability_value",
+      "status": "implemented",
+      "required_inputs": "Distribution calibration, dependence, exposure horizon, survival probabilities, payment timing and spot curve.",
+      "assumptions": "Annual end-year payments; monotonically declining survival; no death benefit or lapse.",
+      "validation": "Certain single payment matches discounting; zero payments yield zero PV and undefined duration.",
+      "failure_modes": "Illustrative normal shocks are not market-implied probabilities. Survival PV is not an insurance reserve or solvency capital model.",
+      "steps": [
+        "State purpose and material risks before selecting deterministic or stochastic form.",
+        "Separate process risk, parameter uncertainty and structural uncertainty; the shipped simulation covers parameter uncertainty only.",
+        "Validate correlation, use a recorded random seed, and report rejected draws and conditional sample size.",
+        "Challenge tails, funding gaps and sensitivity to model form; preserve independent validation evidence."
+      ],
+      "source_ids": [
+        "asop56",
+        "cfa-fcff",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/actuarial-risk/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "actuarial-risk.duration",
+      "domain": "actuarial-risk",
+      "title": "Parallel curve sensitivity",
+      "role": "Actuarial model reviewer",
+      "formula": "Duration = sum(t \u00d7 PV_t / (1+r_t)) / PV; convexity = sum(t(t+1)PV_t/(1+r_t)^2) / PV.",
+      "implementation": "advanced.liability_value",
+      "status": "implemented",
+      "required_inputs": "Distribution calibration, dependence, exposure horizon, survival probabilities, payment timing and spot curve.",
+      "assumptions": "Small parallel shifts in annual effective spot rates; survival held fixed.",
+      "validation": "Compare analytic measures to symmetric numerical bumps; do not label this key-rate duration.",
+      "failure_modes": "Illustrative normal shocks are not market-implied probabilities. Survival PV is not an insurance reserve or solvency capital model.",
+      "steps": [
+        "State purpose and material risks before selecting deterministic or stochastic form.",
+        "Separate process risk, parameter uncertainty and structural uncertainty; the shipped simulation covers parameter uncertainty only.",
+        "Validate correlation, use a recorded random seed, and report rejected draws and conditional sample size.",
+        "Challenge tails, funding gaps and sensitivity to model form; preserve independent validation evidence."
+      ],
+      "source_ids": [
+        "asop56",
+        "cfa-fcff",
+        "nyu-valuation"
+      ],
+      "skill_path": "skills/actuarial-risk/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data-analysis.xbrl",
+      "domain": "data-analysis",
+      "title": "Point-in-time filing selection",
+      "role": "Financial data analyst",
+      "formula": "Filter observations by filed <= as_of; match unit, start/end and taxonomy; select latest eligible filing per identical period.",
+      "implementation": "providers.select_company_fact",
+      "status": "implemented",
+      "required_inputs": "Raw provider response, source URL, retrieval time, units, filing accession, period, taxonomy and mapping decisions.",
+      "assumptions": "Exact caller-approved concept; no universal accounting mapping.",
+      "validation": "Future filings excluded; distinct period lengths retained; conflicting same-date facts flagged.",
+      "failure_modes": "Never sum repeated XBRL contexts, substitute annual for quarterly data, or auto-map financial company statements into operating-company FCFF.",
+      "steps": [
+        "Preserve raw observations with hashes before transformation.",
+        "Select one unit, accounting concept and period; preserve revisions and filing dates.",
+        "Detect missingness, duplicates, stale dates, anomalous scale and taxonomy mismatch.",
+        "Require analyst-approved mappings into the opening balance sheet; prove reconciliation and prohibit future filings."
+      ],
+      "source_ids": [
+        "sec-api",
+        "world-bank",
+        "imf",
+        "sarb"
+      ],
+      "skill_path": "skills/data-analysis/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data-analysis.quality",
+      "domain": "data-analysis",
+      "title": "Evidence and unit checks",
+      "role": "Financial data analyst",
+      "formula": "A usable observation needs value, unit, period, source and retrieval provenance; missing values remain missing.",
+      "implementation": "workflow.review_workflow",
+      "status": "implemented",
+      "required_inputs": "Raw provider response, source URL, retrieval time, units, filing accession, period, taxonomy and mapping decisions.",
+      "assumptions": "Publication and observation dates are different fields.",
+      "validation": "Reconcile balance sheet, reject non-finite values, preserve null provider values.",
+      "failure_modes": "Never sum repeated XBRL contexts, substitute annual for quarterly data, or auto-map financial company statements into operating-company FCFF.",
+      "steps": [
+        "Preserve raw observations with hashes before transformation.",
+        "Select one unit, accounting concept and period; preserve revisions and filing dates.",
+        "Detect missingness, duplicates, stale dates, anomalous scale and taxonomy mismatch.",
+        "Require analyst-approved mappings into the opening balance sheet; prove reconciliation and prohibit future filings."
+      ],
+      "source_ids": [
+        "sec-api",
+        "world-bank",
+        "imf",
+        "sarb"
+      ],
+      "skill_path": "skills/data-analysis/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "data-analysis.retrieval",
+      "domain": "data-analysis",
+      "title": "Source-grounded retrieval",
+      "role": "Financial data analyst",
+      "formula": "Retrieve original method cards with matching terms, then read the linked source and review method limitations.",
+      "implementation": "knowledge.search",
+      "status": "implemented",
+      "required_inputs": "Raw provider response, source URL, retrieval time, units, filing accession, period, taxonomy and mapping decisions.",
+      "assumptions": "Lexical relevance does not verify truth or grant source redistribution rights.",
+      "validation": "Return source IDs and version; no answer without relevant evidence.",
+      "failure_modes": "Never sum repeated XBRL contexts, substitute annual for quarterly data, or auto-map financial company statements into operating-company FCFF.",
+      "steps": [
+        "Preserve raw observations with hashes before transformation.",
+        "Select one unit, accounting concept and period; preserve revisions and filing dates.",
+        "Detect missingness, duplicates, stale dates, anomalous scale and taxonomy mismatch.",
+        "Require analyst-approved mappings into the opening balance sheet; prove reconciliation and prohibit future filings."
+      ],
+      "source_ids": [
+        "sec-api",
+        "world-bank",
+        "imf",
+        "sarb"
+      ],
+      "skill_path": "skills/data-analysis/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "visual-analysis.sensitivity",
+      "domain": "visual-analysis",
+      "title": "Sensitivity surface",
+      "role": "Visualization specialist",
+      "formula": "Evaluate each WACC/growth pair independently; unsupported pairs are explicitly unavailable.",
+      "implementation": "engine.value; dashboard",
+      "status": "implemented",
+      "required_inputs": "Typed model outputs, units, scenario labels, selected driver, chart ranges and accessible table equivalents.",
+      "assumptions": "All other inputs fixed; sensitivity is not a probability distribution.",
+      "validation": "Clickable cells must update both inputs; keyboard controls and table values must match.",
+      "failure_modes": "Do not truncate a bar baseline, color invalid results as zero, or label simulated percentiles as statistical confidence intervals.",
+      "steps": [
+        "Choose an analytical question before choosing a chart.",
+        "Use a forecast line for time, a heatmap for paired sensitivities, a tornado for one-at-a-time effects and a histogram for simulated values.",
+        "Expose exact values, axis units, uncertainty conventions and unsupported cells.",
+        "Keep keyboard access, text equivalents, mobile layout and stale-result state consistent with the engine."
+      ],
+      "source_ids": [
+        "w3c",
+        "vega",
+        "cfa-process"
+      ],
+      "skill_path": "skills/visual-analysis/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "visual-analysis.tornado",
+      "domain": "visual-analysis",
+      "title": "Driver influence",
+      "role": "Visualization specialist",
+      "formula": "Revalue with a bounded negative and positive perturbation, retaining the meaning of input direction.",
+      "implementation": "advanced.diagnostics",
+      "status": "implemented",
+      "required_inputs": "Typed model outputs, units, scenario labels, selected driver, chart ranges and accessible table equivalents.",
+      "assumptions": "One-at-a-time shocks, not causal attribution or standardized elasticities.",
+      "validation": "Display shock size; adverse value may occur at either low or high input.",
+      "failure_modes": "Do not truncate a bar baseline, color invalid results as zero, or label simulated percentiles as statistical confidence intervals.",
+      "steps": [
+        "Choose an analytical question before choosing a chart.",
+        "Use a forecast line for time, a heatmap for paired sensitivities, a tornado for one-at-a-time effects and a histogram for simulated values.",
+        "Expose exact values, axis units, uncertainty conventions and unsupported cells.",
+        "Keep keyboard access, text equivalents, mobile layout and stale-result state consistent with the engine."
+      ],
+      "source_ids": [
+        "w3c",
+        "vega",
+        "cfa-process"
+      ],
+      "skill_path": "skills/visual-analysis/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "visual-analysis.distribution",
+      "domain": "visual-analysis",
+      "title": "Distribution and fan",
+      "role": "Visualization specialist",
+      "formula": "Histogram counts and 5/50/95 percentiles computed from the same accepted draw set.",
+      "implementation": "advanced.simulate; dashboard",
+      "status": "implemented",
+      "required_inputs": "Typed model outputs, units, scenario labels, selected driver, chart ranges and accessible table equivalents.",
+      "assumptions": "Model uncertainty under declared parameter distributions.",
+      "validation": "Counts sum to accepted draws; fan bounds ordered; tables expose plotted data.",
+      "failure_modes": "Do not truncate a bar baseline, color invalid results as zero, or label simulated percentiles as statistical confidence intervals.",
+      "steps": [
+        "Choose an analytical question before choosing a chart.",
+        "Use a forecast line for time, a heatmap for paired sensitivities, a tornado for one-at-a-time effects and a histogram for simulated values.",
+        "Expose exact values, axis units, uncertainty conventions and unsupported cells.",
+        "Keep keyboard access, text equivalents, mobile layout and stale-result state consistent with the engine."
+      ],
+      "source_ids": [
+        "w3c",
+        "vega",
+        "cfa-process"
+      ],
+      "skill_path": "skills/visual-analysis/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "model-governance.gates",
+      "domain": "model-governance",
+      "title": "Evidence review gates",
+      "role": "Independent model reviewer",
+      "formula": "Mandate \u2192 evidence \u2192 reconcile \u2192 challenge \u2192 communicate, with explicit missing-evidence and conflict states.",
+      "implementation": "workflow.review_workflow",
+      "status": "implemented",
+      "required_inputs": "Input fingerprint, model version, evidence ledger, method applicability, tests, exceptions and review notes.",
+      "assumptions": "Six material input mappings require corroborated non-synthetic evidence dated no later than valuation.",
+      "validation": "Future evidence and unresolved conflicts block readiness.",
+      "failure_modes": "Never convert lack of evidence into a confident answer or describe source metadata as a fully ingested financial database.",
+      "steps": [
+        "Define scope and materiality; identify unsupported business models and excluded claims.",
+        "Separate facts, guidance, assumptions and synthetic examples in the evidence ledger.",
+        "Run validation, benchmark independent examples and document known limitations.",
+        "Save immutable runs and resolve conflicts before independent review; a passing automated check is not a professional sign-off."
+      ],
+      "source_ids": [
+        "asop56",
+        "cfa-process",
+        "sec-api"
+      ],
+      "skill_path": "skills/model-governance/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "model-governance.audit",
+      "domain": "model-governance",
+      "title": "Immutable calculation runs",
+      "role": "Independent model reviewer",
+      "formula": "Persist inputs, results, analysis, optional simulation, model version and payload/input SHA-256 hashes.",
+      "implementation": "knowledge.save_run",
+      "status": "implemented",
+      "required_inputs": "Input fingerprint, model version, evidence ledger, method applicability, tests, exceptions and review notes.",
+      "assumptions": "Local SQLite single-user deployment; immutable SQL triggers, not tamper-proof infrastructure.",
+      "validation": "Rerunning saved inputs reproduces numerical output; attempted run updates fail.",
+      "failure_modes": "Never convert lack of evidence into a confident answer or describe source metadata as a fully ingested financial database.",
+      "steps": [
+        "Define scope and materiality; identify unsupported business models and excluded claims.",
+        "Separate facts, guidance, assumptions and synthetic examples in the evidence ledger.",
+        "Run validation, benchmark independent examples and document known limitations.",
+        "Save immutable runs and resolve conflicts before independent review; a passing automated check is not a professional sign-off."
+      ],
+      "source_ids": [
+        "asop56",
+        "cfa-process",
+        "sec-api"
+      ],
+      "skill_path": "skills/model-governance/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfp-suitability.suitability",
+      "domain": "cfp-suitability",
+      "title": "Value versus suitability",
+      "role": "Financial-planning reviewer",
+      "formula": "A valuation estimate is an input to a client decision; objectives, risk capacity and liquidity remain independent constraints.",
+      "implementation": "review workflow",
+      "status": "review-only",
+      "required_inputs": "Client goals, liquidity needs, investment horizon, concentration, loss capacity, jurisdiction and constraints.",
+      "assumptions": "No client suitability inferred from upside percentage.",
+      "validation": "CFP workflow cannot modify operating-company intrinsic value to fit a desired recommendation.",
+      "failure_modes": "Intrinsic value alone never establishes suitability. This layer supplies a workflow, not South African tax calculations or regulated advice.",
+      "steps": [
+        "Finish the investment valuation before evaluating suitability.",
+        "Assess whether liquidity, concentration and downside fit client objectives and ability to absorb losses.",
+        "Identify jurisdiction-specific tax, regulatory and estate-planning questions requiring verified local rules.",
+        "Document alternatives, implementation constraints and monitoring needs in a separate client recommendation."
+      ],
+      "source_ids": [
+        "fpsb",
+        "cfa-process"
+      ],
+      "skill_path": "skills/cfp-suitability/SKILL.md",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cfp-suitability.monitoring",
+      "domain": "cfp-suitability",
+      "title": "Client review and monitoring",
+      "role": "Financial-planning reviewer",
+      "formula": "Track changed goals, concentrations, liquidity and new valuation evidence separately.",
+      "implementation": "review workflow",
+      "status": "review-only",
+      "required_inputs": "Client goals, liquidity needs, investment horizon, concentration, loss capacity, jurisdiction and constraints.",
+      "assumptions": "Monitoring cadence and responsibilities must be agreed with the client.",
+      "validation": "Flag stale assumptions and changed constraints; never reuse an old valuation silently.",
+      "failure_modes": "Intrinsic value alone never establishes suitability. This layer supplies a workflow, not South African tax calculations or regulated advice.",
+      "steps": [
+        "Finish the investment valuation before evaluating suitability.",
+        "Assess whether liquidity, concentration and downside fit client objectives and ability to absorb losses.",
+        "Identify jurisdiction-specific tax, regulatory and estate-planning questions requiring verified local rules.",
+        "Document alternatives, implementation constraints and monitoring needs in a separate client recommendation."
+      ],
+      "source_ids": [
+        "fpsb",
+        "cfa-process"
+      ],
+      "skill_path": "skills/cfp-suitability/SKILL.md",
+      "version": "1.0.0"
+    }
+  ]
+}

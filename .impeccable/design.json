@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T03:51:23.0172887+02:00",
+  "title": "Design System: Valuation Lab",
+  "extensions": {
+    "colorMeta": {
+      "accent": { "role": "primary", "displayName": "Research green" },
+      "warm": { "role": "secondary", "displayName": "Terracotta scenario" },
+      "paper": { "role": "neutral", "displayName": "Botanical paper" },
+      "ink": { "role": "neutral", "displayName": "Deep green ink" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Editorial heading", "purpose": "Main company or workspace heading, balanced within 28ch." },
+      "metric": { "displayName": "Valuation number", "purpose": "Large serif values in three-column metric strips." },
+      "code": { "displayName": "Calculation record", "purpose": "Inspectable JSON input and output records." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "view-reveal", "value": "reveal .22s ease-out", "purpose": "Opacity from .8 to 1 on analysis views; removed under prefers-reduced-motion: reduce." }
+    ],
+    "breakpoints": [
+      { "name": "wide-min", "value": "1500px" },
+      { "name": "compact-max", "value": "1150px" },
+      { "name": "mobile-max", "value": "720px" }
+    ],
+    "provenance": {
+      "sources": ["PRODUCT.md", "web/style.css", "web/index.html", "web/app.js"],
+      "mode": "Operate",
+      "approach": "Direct code-first",
+      "confirmed": ["Guided and Advanced views"],
+      "reviewerDisposition": "Ship following mobile-legibility and stale-simulation fixes",
+      "approvalScope": "Extracted implementation documentation; no additional user visual approval asserted."
+    },
+    "interactionTiming": { "driverRecalculationMs": 350, "knowledgeSearchMs": 200, "chartResizeMs": 150 },
+    "computedChartColor": { "sensitivity": "hsl(137 22% L%) where L = 94 - normalizedValue * 24" }
+  },
+  "components": [
+    {
+      "name": "Primary calculation button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action for calculating or simulating a research case.",
+      "html": "<button class=\"ds-primary\">Recalculate valuation</button>",
+      "css": ".ds-primary{font:14px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);background:var(--accent,#176854);color:var(--white,#fff);border:1px solid var(--accent,#176854);padding:9px 14px;border-radius:4px;min-height:40px;cursor:pointer}.ds-primary:hover{background:#104c3e}.ds-primary:focus-visible{outline:2px solid var(--focus,#905018);outline-offset:4px}.ds-primary:disabled{opacity:.45;cursor:default}"
+    },
+    {
+      "name": "Assumption field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labeled white fields keep editable assumptions distinct from calculated values.",
+      "html": "<label class=\"ds-label\">WACC uncertainty (pp)<input class=\"ds-input\" type=\"number\" value=\"1\" step=\".1\"></label>",
+      "css": ".ds-label{display:block;font:600 12px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);color:var(--muted,#596a63)}.ds-input{display:block;width:100%;font:14px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);color:var(--ink,#18352f);border:1px solid var(--line,#d6dfd7);border-radius:3px;background:var(--white,#fff);padding:9px;margin:5px 0 12px;caret-color:var(--accent,#176854)}.ds-input:focus-visible{outline:2px solid var(--focus,#905018);outline-offset:4px}"
+    },
+    {
+      "name": "Analysis navigation",
+      "kind": "nav",
+      "description": "Horizontal, scrollable view selection with a green underline on the current page.",
+      "html": "<nav class=\"ds-tabs\" aria-label=\"Analysis views\"><button aria-current=\"page\">Valuation</button><button>Risk laboratory</button><button>Method studio</button></nav>",
+      "css": ".ds-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line,#d6dfd7);overflow:auto}.ds-tabs button{font:13px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);border:0;border-bottom:2px solid transparent;border-radius:0;background:none;white-space:nowrap;padding:11px 0 15px;min-height:40px;cursor:pointer;color:var(--muted,#596a63)}.ds-tabs button[aria-current]{border-color:var(--accent,#176854);color:var(--accent,#176854);font-weight:650}.ds-tabs button:hover{border-bottom-color:#9ab6a6}.ds-tabs button:focus-visible{outline:2px solid var(--focus,#905018);outline-offset:4px}"
+    },
+    {
+      "name": "Stale result notice",
+      "kind": "custom",
+      "description": "A local warning preserves the distinction between displayed outputs and edited assumptions.",
+      "html": "<p class=\"ds-stale\" role=\"status\">Simulation settings changed. This distribution shows the previous settings. Rerun before saving.</p>",
+      "css": ".ds-stale{font:12px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);padding:12px;background:#f5e6ca;color:#704b17;margin:0 0 20px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Editorial Research Workbench (descriptive implementation label)",
+    "overview": "A light, restrained workspace pairs serif analytical headings with compact system-font controls. Pale paper surfaces, ruled sections and open chart areas support sustained inspection of assumptions and evidence. This is a record of the implemented direction, not a claim of separate brand approval.",
+    "keyCharacteristics": ["Editorial headings and tabular numbers", "Green base-case and terracotta scenario marks", "Flat ruled sections", "Visible provenance and result validity"],
+    "rules": [{ "name": "The Series Identity Rule", "body": "Preserve green base and terracotta scenario semantics, with dashed scenario lines and explicit labels.", "section": "colors" }],
+    "dos": ["Do reuse the existing typography and paper surfaces.", "Do retain accessible chart descriptions and exact-value tables.", "Do mark stale results and disable invalid exports."],
+    "donts": ["Don't present edited assumptions as already calculated.", "Don't rely on color alone for scenario identity.", "Don't invent additional user design approval."]
+  }
+}
