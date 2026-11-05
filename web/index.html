@@ -1,114 +1,579 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Valuation Lab</title>
-<style>
-:root{color-scheme:dark;--bg:#101923;--panel:#172431;--line:#314456;--ink:#edf4f8;--muted:#aebfcc;--accent:#84ebbc}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui}header,main{max-width:1350px;margin:auto;padding:24px}header{border-bottom:1px solid var(--line)}h1{font-size:clamp(2rem,5vw,4rem);margin:0}h2{font-size:1.15rem;margin-top:0}.tag{color:var(--accent);font-size:.75rem;letter-spacing:.15em;font-weight:700}p{color:var(--muted)}main{display:grid;grid-template-columns:minmax(280px,1fr) minmax(0,2fr);gap:18px}.panel,.metric{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}.metric strong{display:block;font-size:1.4rem;color:var(--accent)}textarea{width:100%;height:32rem;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:12px;border-radius:6px;font:13px/1.5 monospace}button,label.upload{background:#233b4a;border:1px solid var(--line);border-radius:6px;color:var(--ink);padding:8px 12px;margin:4px 4px 4px 0;cursor:pointer;display:inline-block}button.primary{background:var(--accent);color:#101923;font-weight:bold}button:disabled{opacity:.5;cursor:default}input[type=file]{max-width:100%;margin:8px 0}section+section{margin-top:16px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse}th,td{padding:7px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}th:first-child,td:first-child{text-align:left}pre{white-space:pre-wrap;color:#f5b3ab}a{color:var(--accent)}@media(max-width:800px){main{grid-template-columns:1fr}textarea{height:18rem}}
-</style>
-</head>
-<body>
-<header><div class="tag">OPEN VALUATION WORKBENCH / 0.1</div><h1>Valuation Lab</h1><p>Operating-company forecasts, valuation evidence and ESG scenarios in one reviewable case.</p></header>
-<main>
-<aside class="panel"><h2>Case inputs</h2><button id="sample">Load fictional case</button><input id="upload" aria-label="Upload case JSON" type="file" accept=".json,application/json"><textarea id="input" aria-label="Case JSON" spellcheck="false"></textarea><button class="primary" id="run">Run valuation</button><a href="/docs">API schema</a><pre id="status" role="status"></pre></aside>
-<article>
-<section class="panel"><h2 id="company">Valuation overview</h2><div id="metrics" class="metrics"></div><p id="meta">Load an example or supply a JSON case.</p><div id="exports"><button data-kind="docx" disabled>Word report</button><button data-kind="xlsx" disabled>Excel statements</button><button data-kind="pptx" disabled>PowerPoint</button></div></section>
-<section class="panel"><h2>Base forecast</h2><div id="forecast" class="scroll"></div></section>
-<section class="panel"><h2>Per-share sensitivity</h2><div id="sensitivity" class="scroll"></div></section>
-<section class="panel"><h2>Scenario evidence and model checks</h2><ul id="checks"></ul></section>
-</article>
-</main>
-<script>
-const by = id => document.getElementById(id);
-const number = new Intl.NumberFormat(undefined,{maximumFractionDigits:2});
-const percent = new Intl.NumberFormat(undefined,{style:"percent",maximumFractionDigits:2});
-let completedCase;
-const exports = [...document.querySelectorAll("[data-kind]")];
-function append(root, tag, content) {
-  const el = document.createElement(tag);
-  el.textContent = content;
-  root.append(el);
-  return el;
-}
-function table(id, headers, rows) {
-  const host = by(id);
-  host.replaceChildren();
-  const grid = append(host,"table","");
-  const head = append(append(grid,"thead",""),"tr","");
-  headers.forEach(value=>append(head,"th",value));
-  const body = append(grid,"tbody","");
-  rows.forEach(row=>{
-    const tr=append(body,"tr","");
-    row.forEach(value=>append(tr,"td",value));
-  });
-}
-function show(result) {
-  const data = result.inputs;
-  by("company").textContent = data.company;
-  by("meta").textContent = data.currency + " · " + data.valuation_date + " · Input " + result.input_sha256.slice(0,12);
-  by("metrics").replaceChildren();
-  for (const [name,model] of [["Base DCF / share",result.base],["ESG scenario / share",result.scenario],["Peer median / share",result.comps]]) {
-    const card = append(by("metrics"),"div",name);
-    card.className="metric";
-    append(card,"strong",model.per_share == null ? "Unavailable" : number.format(model.per_share));
-  }
-  const forecast = result.statements;
-  table("forecast",["Metric",...forecast.map(r=>"Year "+r.year)],
-    ["revenue","ebitda","ebit","net_income","cfo","cfi","cash","debt","fcff"].map(key=>[key.replaceAll("_"," "),...forecast.map(row=>number.format(row[key]))]));
-  const rates = [...new Set(result.sensitivity.map(row=>row.wacc))];
-  const growth = [...new Set(result.sensitivity.map(row=>row.growth))];
-  table("sensitivity",["WACC / Growth",...growth.map(g=>percent.format(g))],
-    rates.map(w=>[percent.format(w),...result.sensitivity.filter(row=>row.wacc===w).map(row=>row.per_share == null ? "N/A" : number.format(row.per_share))]));
-  by("checks").replaceChildren();
-  for (const r of data.risks) append(by("checks"),"li",r.factor + " · " + r.issue + " · " + r.driver + " " + r.change_pp + " pp · years " + r.start + "–" + r.end + " · " + r.confidence + " confidence · " + r.source);
-  for (const model of [result.base,result.scenario]) if(model.reason) append(by("checks"),"li",model.reason);
-  for (const check of result.checks) append(by("checks"),"li",check);
-}
-async function guarded(work) {
-  by("status").textContent="";
-  try { await work(); } catch(error) { by("status").textContent=error.message; }
-}
-by("sample").onclick=()=>guarded(async()=>{
-  const response=await fetch("/api/v1/example");
-  if(!response.ok) throw Error("Example unavailable");
-  by("input").value=JSON.stringify(await response.json(),null,2);
-});
-by("upload").onchange=()=>guarded(async()=>{
-  const file=by("upload").files[0];
-  if(file && file.size>262144) throw Error("Case file exceeds 256 KB");
-  if(file) by("input").value=await file.text();
-});
-async function post(path, payload) {
-  const response=await fetch(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
-  if(!response.ok) {
-    const error=await response.json();
-    throw Error(JSON.stringify(error.detail,null,2));
-  }
-  return response;
-}
-by("run").onclick=()=>guarded(async()=>{
-  by("run").disabled=true;
-  try {
-    const response=await post("/api/v1/valuation",JSON.parse(by("input").value));
-    const result=await response.json();
-    show(result);
-    completedCase=result.inputs;
-    exports.forEach(button=>button.disabled=false);
-  } finally { by("run").disabled=false; }
-});
-exports.forEach(button=>button.onclick=()=>guarded(async()=>{
-  const kind=button.dataset.kind;
-  const response=await post("/api/v1/export/"+kind,completedCase);
-  const url=URL.createObjectURL(await response.blob());
-  const link=document.createElement("a");
-  link.href=url;
-  link.download="valuation."+kind;
-  link.click();
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
-}));
-by("sample").click();
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Valuation Lab · Research workbench</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#workspace">Skip to analysis</a>
+    <header class="masthead">
+      <a class="brand" href="/">Valuation<span>Lab</span></a
+      ><span class="edition">Research workbench</span>
+      <div class="mode">
+        <button id="guided" aria-pressed="true">Guided</button
+        ><button id="advanced" aria-pressed="false">Advanced</button>
+      </div>
+      <a href="/docs" class="api-link">API reference</a>
+    </header>
+    <div class="app-shell">
+      <aside class="controls" aria-label="Case assumptions">
+        <div class="case-heading">
+          <h2>Investment case</h2>
+          <button id="sample" class="text-button">Reset example</button>
+        </div>
+        <label for="company-input">Company</label
+        ><input id="company-input" maxlength="100" />
+        <p class="demo-notice" id="data-label">Fictional demonstration · ZAR</p>
+        <div class="input-heading">
+          <h3>Operating assumptions</h3>
+          <span>Annual %</span>
+        </div>
+        <div id="driver-controls"></div>
+        <details class="advanced-only">
+          <summary>Complete case &amp; sources</summary>
+          <p>Edit balances, peers and risks. JSON rates are decimals.</p>
+          <label for="input">Case JSON</label
+          ><textarea id="input" spellcheck="false"></textarea
+          ><label for="upload">Import case JSON</label
+          ><input
+            id="upload"
+            type="file"
+            accept=".json,application/json"
+          /><button id="apply-json">Apply JSON &amp; calculate</button>
+        </details>
+        <button class="primary full" id="run">Recalculate valuation</button
+        ><button class="full" id="save">Save research run</button>
+        <p class="guide">
+          Change an assumption to recalculate. Advanced exposes the complete
+          input record.
+        </p>
+        <div id="status" role="status" aria-live="polite">
+          Loading the example…
+        </div>
+      </aside>
+      <main id="workspace" tabindex="-1">
+        <div class="workspace-heading">
+          <div>
+            <h1 id="company">Explore the value drivers.</h1>
+            <p id="meta">An evidence-led investment research workspace.</p>
+          </div>
+          <button id="download" disabled>Download run JSON</button>
+        </div>
+        <nav class="tabs" aria-label="Analysis views">
+          <button data-tab="valuation" aria-current="page">Valuation</button
+          ><button data-tab="risk">Risk laboratory</button
+          ><button data-tab="methods">Method studio</button
+          ><button data-tab="knowledge">Knowledge library</button
+          ><button data-tab="workflow">Evidence &amp; review</button>
+        </nav>
+        <div id="stale" class="stale" hidden>
+          Inputs changed. Displayed figures belong to the previous run.
+        </div>
+        <section id="valuation" class="view">
+          <div class="value-strip" id="metrics"></div>
+          <div class="guide explanation">
+            <strong>What drives this value?</strong> The explicit forecast
+            values cash generated in the next few years. The terminal estimate
+            represents everything beyond that horizon. Challenge both before
+            comparing with peers.
+          </div>
+          <section>
+            <div class="section-heading">
+              <div>
+                <h2>Cash generation, year by year</h2>
+                <p>
+                  Base and risk-adjusted forecast ·
+                  <span class="currency">ZAR</span> millions
+                </p>
+              </div>
+              <label class="inline-label"
+                >Measure<select id="chart-metric">
+                  <option value="fcff">Free cash flow</option>
+                  <option value="revenue">Revenue</option>
+                  <option value="ebitda">EBITDA</option>
+                  <option value="cash">Cash balance</option>
+                </select></label
+              >
+            </div>
+            <div class="legend">
+              <span class="dot base"></span>Base case
+              <span class="dot scenario"></span>Risk scenario
+            </div>
+            <div id="forecast-chart" class="chart"></div>
+            <details>
+              <summary>Forecast data table</summary>
+              <div id="forecast" class="scroll"></div>
+            </details>
+          </section>
+          <div class="two-col">
+            <section>
+              <div class="section-heading">
+                <div>
+                  <h2>Price the assumptions</h2>
+                  <p>
+                    Per-share sensitivity · select a cell to apply its rates
+                  </p>
+                </div>
+              </div>
+              <div id="sensitivity" class="scroll"></div>
+              <p class="small">
+                Rows: WACC. Columns: terminal growth. Unsupported combinations
+                remain unavailable.
+              </p>
+            </section>
+            <section>
+              <div class="section-heading">
+                <div>
+                  <h2>From operations to equity</h2>
+                  <p>
+                    Enterprise value bridge ·
+                    <span class="currency">ZAR</span> millions
+                  </p>
+                </div>
+              </div>
+              <div id="bridge"></div>
+              <p id="terminal-note" class="small"></p>
+            </section>
+          </div>
+          <section>
+            <div class="section-heading">
+              <div>
+                <h2>Which assumptions matter most?</h2>
+                <p>
+                  One-at-a-time changes · per-share values, not probabilities
+                </p>
+              </div>
+            </div>
+            <div id="tornado"></div>
+          </section>
+          <details>
+            <summary>Operating returns, peers &amp; model checks</summary>
+            <div id="ratios" class="scroll"></div>
+            <div id="peers" class="scroll"></div>
+            <ul id="checks"></ul>
+          </details>
+          <div class="export-row">
+            <span>Export current valuation</span
+            ><button data-kind="docx" disabled>Word</button
+            ><button data-kind="xlsx" disabled>Excel</button
+            ><button data-kind="pptx" disabled>PowerPoint</button>
+          </div>
+        </section>
+        <section id="risk" class="view" hidden>
+          <h2>Explore a range of outcomes.</h2>
+          <p>
+            Correlated parameter uncertainty, with a reproducible random seed.
+          </p>
+          <p class="guide explanation">
+            Illustrative distributions, not calibrated probabilities. Each draw
+            holds its growth, margin and WACC constant across years. Invalid
+            draws are counted and excluded.
+          </p>
+          <form id="risk-form" class="form-grid">
+            <label
+              >Draws<input
+                id="draws"
+                type="number"
+                min="100"
+                max="5000"
+                value="1000"
+                required /></label
+            ><label
+              >Random seed<input
+                id="seed"
+                type="number"
+                min="0"
+                max="4294967295"
+                value="42"
+                required /></label
+            ><label
+              >Growth uncertainty (pp)<input
+                id="growth-sd"
+                type="number"
+                min="0"
+                max="25"
+                step=".1"
+                value="2.5"
+                required /></label
+            ><label
+              >Margin uncertainty (pp)<input
+                id="margin-sd"
+                type="number"
+                min="0"
+                max="25"
+                step=".1"
+                value="2"
+                required /></label
+            ><label
+              >WACC uncertainty (pp)<input
+                id="wacc-sd"
+                type="number"
+                min="0"
+                max="20"
+                step=".1"
+                value="1"
+                required /></label
+            ><label
+              >Reference share price (optional)<input
+                id="reference-price"
+                type="number"
+                min=".01"
+                step="any"
+                placeholder="For loss estimates" /></label
+            ><label class="wide advanced-only"
+              >Correlation matrix: growth, margin, WACC<textarea
+                id="correlation"
+                class="short"
+              >
+[[1,0.35,-0.2],[0.35,1,-0.25],[-0.2,-0.25,1]]</textarea
+              ></label
+            ><button class="primary" type="submit">Run simulation</button>
+          </form>
+          <div id="risk-output">
+            <p class="empty">
+              Set the uncertainty assumptions and run the simulation.
+            </p>
+          </div>
+          <section class="macro">
+            <h2>Economic transmission</h2>
+            <p>
+              Shocks to demand, pricing, imported costs and financing.
+              Coefficients are analyst assumptions.
+            </p>
+            <form id="macro-form" class="form-grid">
+              <label
+                >Real GDP shock (pp)<input
+                  id="gdp-shock"
+                  type="number"
+                  value="-2"
+                  min="-30"
+                  max="30"
+                  step=".1"
+                  required /></label
+              ><label
+                >Inflation shock (pp)<input
+                  id="inflation-shock"
+                  type="number"
+                  value="1"
+                  min="-30"
+                  max="30"
+                  step=".1"
+                  required /></label
+              ><label
+                >Policy-rate shock (pp)<input
+                  id="rate-shock"
+                  type="number"
+                  value="1"
+                  min="-20"
+                  max="20"
+                  step=".1"
+                  required /></label
+              ><label
+                >FX depreciation (%)<input
+                  id="fx-shock"
+                  type="number"
+                  value="10"
+                  min="-50"
+                  max="100"
+                  step=".1"
+                  required /></label
+              ><label
+                >Revenue / GDP beta<input
+                  id="gdp-beta"
+                  type="number"
+                  value="1"
+                  min="0"
+                  max="5"
+                  step=".1"
+                  required /></label
+              ><label
+                >Price pass-through<input
+                  id="price-pass"
+                  type="number"
+                  value=".5"
+                  min="0"
+                  max="1"
+                  step=".05"
+                  required /></label
+              ><label
+                >Imported cost share<input
+                  id="import-share"
+                  type="number"
+                  value=".2"
+                  min="0"
+                  max="1"
+                  step=".05"
+                  required /></label
+              ><label
+                >Rate pass-through<input
+                  id="rate-pass"
+                  type="number"
+                  value=".5"
+                  min="0"
+                  max="1"
+                  step=".05"
+                  required /></label
+              ><button type="submit">Evaluate macro scenario</button>
+            </form>
+            <p id="macro-result" role="status"></p>
+          </section>
+        </section>
+        <section id="methods" class="view" hidden>
+          <h2>Choose the method before the answer.</h2>
+          <p>
+            Explicit inputs, inspectable results. These calculators do not
+            automatically change the operating-company case.
+          </p>
+          <label for="method-choice">Calculation method</label
+          ><select id="method-choice">
+            <option value="capital-cost">Bottom-up cost of capital</option>
+            <option value="fcfe">Free cash flow to equity</option>
+            <option value="residual_income">Residual income</option>
+            <option value="apv">Adjusted present value</option>
+            <option value="dividends">Dividend discount model</option>
+            <option value="liability">Survival-contingent liability</option>
+            <option value="reverse-dcf">Market-implied reverse DCF</option>
+            <option value="earnings-quality">
+              Earnings-quality diagnostics
+            </option>
+            <option value="forecast-evaluation">
+              Walk-forward forecast evaluation
+            </option>
+          </select>
+          <p id="method-help" class="explanation"></p>
+          <div class="two-col">
+            <div>
+              <label for="method-input"
+                >Method inputs · annual rates as decimals</label
+              ><textarea id="method-input" spellcheck="false"></textarea
+              ><button id="calculate-method" class="primary">
+                Calculate method
+              </button>
+            </div>
+            <div>
+              <h3>Calculation record</h3>
+              <pre id="method-output">
+Choose a method and calculate its example.</pre
+              >
+              <div id="method-chart" class="chart"></div>
+            </div>
+          </div>
+        </section>
+        <section id="knowledge" class="view" hidden>
+          <section class="discovery">
+            <h2>Find the right company universe.</h2>
+            <p>
+              FinanceDatabase listings, with original currencies and exchange
+              codes. Discovery records are not live prices or fundamentals.
+            </p>
+            <form id="instrument-form" class="form-grid">
+              <label
+                >Name or symbol<input
+                  id="instrument-query"
+                  placeholder="e.g. Sasol or SOL.JO" /></label
+              ><label
+                >Listing exchange<input
+                  id="instrument-exchange"
+                  value="JNB"
+                  placeholder="JNB, NYQ, NMS…" /></label
+              ><label
+                >Company domicile<input
+                  id="instrument-country"
+                  placeholder="Optional, e.g. South Africa" /></label
+              ><button type="submit">Search security master</button>
+            </form>
+            <p id="instrument-status" role="status"></p>
+            <div id="instrument-table" class="scroll"></div>
+          </section>
+          <h2>A research library you can interrogate.</h2>
+          <p id="knowledge-meta">
+            Original method cards linked to primary sources.
+          </p>
+          <div class="search-row">
+            <label
+              >Search methods<input
+                id="knowledge-query"
+                type="search"
+                placeholder="Try terminal, survival, inflation…" /></label
+            ><label
+              >Discipline<select id="knowledge-domain">
+                <option value="">All disciplines</option>
+              </select></label
+            >
+          </div>
+          <div id="knowledge-results"></div>
+          <details>
+            <summary>Reviewed open-source foundations</summary>
+            <p>
+              Inspected code revisions and integration decisions. Repository
+              licenses do not automatically cover every dataset or model weight.
+            </p>
+            <div id="repository-table" class="scroll"></div>
+          </details>
+          <details id="skill-detail">
+            <summary>Full analyst skill</summary>
+            <pre id="skill-text"></pre>
+          </details>
+          <section class="macro">
+            <h2>Official economic data</h2>
+            <p>
+              World Bank observations with provenance. Imports stay separate
+              from valuation assumptions.
+            </p>
+            <form id="data-form" class="form-grid">
+              <label
+                >Country code<input
+                  id="data-country"
+                  value="ZAF"
+                  pattern="[A-Z]{3}"
+                  maxlength="3"
+                  required /></label
+              ><label
+                >Indicator<select id="data-indicator">
+                  <option value="gdp_growth">Real GDP growth</option>
+                  <option value="inflation">Consumer-price inflation</option>
+                  <option value="real_gdp">Real GDP level</option>
+                </select></label
+              ><label
+                >Start year<input
+                  id="data-start"
+                  type="number"
+                  value="2015"
+                  min="1960"
+                  max="2100"
+                  required /></label
+              ><label
+                >End year<input
+                  id="data-end"
+                  type="number"
+                  value="2025"
+                  min="1960"
+                  max="2100"
+                  required /></label
+              ><button type="submit">Fetch official observations</button>
+            </form>
+            <p id="data-status" role="status"></p>
+            <div id="data-table" class="scroll"></div>
+          </section>
+        </section>
+        <section id="workflow" class="view" hidden>
+          <h2>Make the reasoning reviewable.</h2>
+          <p>
+            Evidence, calculation fingerprints and unresolved questions travel
+            with each saved run.
+          </p>
+          <div id="workflow-gates"></div>
+          <section class="macro">
+            <h2>Specialist research &amp; challenge</h2>
+            <p>
+              Prepare evidence requirements and review tasks for each
+              discipline. This is a deterministic plan; an MCP client supplies
+              any AI researchers.
+            </p>
+            <button id="prepare-research">Prepare research plan</button>
+            <div id="research-roles"></div>
+          </section>
+          <div class="two-col">
+            <section>
+              <h3>Saved research runs</h3>
+              <button id="refresh-history">Refresh history</button>
+              <div id="history"></div>
+            </section>
+            <section>
+              <h3>Evidence ledger</h3>
+              <p id="active-run">Save a research run to attach evidence.</p>
+              <form id="evidence-form">
+                <label
+                  >Input mapping<select id="evidence-path">
+                    <option>opening</option>
+                    <option>drivers.wacc</option>
+                    <option>drivers.terminal_growth</option>
+                    <option>drivers.terminal_roic</option>
+                    <option>drivers.revenue_growth</option>
+                    <option>drivers.ebitda_margin</option>
+                  </select></label
+                ><label
+                  >Claim<input
+                    id="evidence-claim"
+                    required
+                    maxlength="1000" /></label
+                ><label
+                  >Source URL<input
+                    id="evidence-url"
+                    type="url"
+                    required /></label
+                ><label
+                  >Publisher<input id="evidence-publisher" required
+                /></label>
+                <div class="form-grid">
+                  <label
+                    >Published<input
+                      id="evidence-date"
+                      type="date"
+                      required /></label
+                  ><label
+                    >Retrieved<input
+                      id="evidence-retrieved"
+                      type="date"
+                      required /></label
+                  ><label
+                    >Period<input
+                      id="evidence-period"
+                      placeholder="FY2025"
+                      required /></label
+                  ><label
+                    >Units<input
+                      id="evidence-units"
+                      placeholder="ZAR, full units"
+                      required
+                  /></label>
+                </div>
+                <label
+                  >Page / table / XBRL locator<input
+                    id="evidence-locator"
+                    required
+                /></label>
+                <div class="form-grid">
+                  <label
+                    >Evidence kind<select id="evidence-kind">
+                      <option value="reported">Reported fact</option>
+                      <option value="guidance">Management guidance</option>
+                      <option value="analyst_assumption">
+                        Analyst assumption
+                      </option>
+                      <option value="synthetic">Synthetic</option>
+                    </select></label
+                  ><label
+                    >Review state<select id="evidence-review">
+                      <option value="unreviewed">Unreviewed</option>
+                      <option value="corroborated">Corroborated</option>
+                      <option value="conflicted">Conflicted</option>
+                    </select></label
+                  >
+                </div>
+                <label
+                  >Corroboration / conflict notes<textarea
+                    id="evidence-notes"
+                    class="short"
+                  ></textarea></label
+                ><button id="add-evidence" type="submit" disabled>
+                  Attach evidence
+                </button>
+              </form>
+              <div id="evidence-list"></div>
+            </section>
+          </div>
+        </section>
+        <footer>
+          Valuation Lab · CFA-oriented methods, separate CFP suitability
+          workflow.<span
+            >Local research tool. Independent review remains essential.</span
+          >
+        </footer>
+      </main>
+    </div>
+  </body>
 </html>
