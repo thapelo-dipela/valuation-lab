@@ -24,6 +24,9 @@ def reverse_dcf(request: ReverseDCF):
     def price(x):
         data = request.case.model_dump()
         data["drivers"][request.driver] = x
+        if request.driver != "wacc":
+            for annual in data.get("annual_drivers", []):
+                annual[request.driver] = x
         try:
             return value(Case.model_validate(data))["base"].get("per_share")
         except ValidationError:

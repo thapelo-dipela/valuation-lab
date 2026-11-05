@@ -1,77 +1,173 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-05T03:51:23.0172887+02:00",
+  "generatedAt": "2026-11-05T04:39:07.4458823+02:00",
   "title": "Design System: Valuation Lab",
   "extensions": {
     "colorMeta": {
-      "accent": { "role": "primary", "displayName": "Research green" },
-      "warm": { "role": "secondary", "displayName": "Terracotta scenario" },
-      "paper": { "role": "neutral", "displayName": "Botanical paper" },
-      "ink": { "role": "neutral", "displayName": "Deep green ink" }
+      "accent": {
+        "role": "primary",
+        "displayName": "Workspace blue"
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Action green"
+      },
+      "warm": {
+        "role": "secondary",
+        "displayName": "Active-tab coral"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Dark workspace"
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Raised dark surface"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Light foreground"
+      },
+      "positive": {
+        "role": "secondary",
+        "displayName": "Rising candle green"
+      },
+      "negative": {
+        "role": "secondary",
+        "displayName": "Falling candle red"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Editorial heading", "purpose": "Main company or workspace heading, balanced within 28ch." },
-      "metric": { "displayName": "Valuation number", "purpose": "Large serif values in three-column metric strips." },
-      "code": { "displayName": "Calculation record", "purpose": "Inspectable JSON input and output records." }
+      "display": {
+        "displayName": "Workspace heading",
+        "purpose": "Compact sans-serif heading; 20px on mobile."
+      },
+      "metric": {
+        "displayName": "Valuation number",
+        "purpose": "Tabular, sans-serif financial values."
+      }
     },
-    "shadows": [],
+    "shadows": [
+      {
+        "name": "button-edge",
+        "value": "0 1px 0 #010409",
+        "purpose": "Small structural button edge; absent from tabs, sidebar and text buttons."
+      }
+    ],
     "motion": [
-      { "name": "view-reveal", "value": "reveal .22s ease-out", "purpose": "Opacity from .8 to 1 on analysis views; removed under prefers-reduced-motion: reduce." }
+      {
+        "name": "view-reveal",
+        "value": "reveal .22s ease-out",
+        "purpose": "Opacity .8 to 1; disabled under prefers-reduced-motion: reduce."
+      },
+      {
+        "name": "button-press",
+        "value": "translateY(1px)",
+        "purpose": "Immediate active-button feedback."
+      }
     ],
     "breakpoints": [
-      { "name": "wide-min", "value": "1500px" },
-      { "name": "compact-max", "value": "1150px" },
-      { "name": "mobile-max", "value": "720px" }
+      {
+        "name": "base-wide-min",
+        "value": "1500px"
+      },
+      {
+        "name": "base-paired-regions-max",
+        "value": "1150px"
+      },
+      {
+        "name": "workspace-compact-max",
+        "value": "1000px"
+      },
+      {
+        "name": "base-stacked-shell-max",
+        "value": "720px"
+      },
+      {
+        "name": "workspace-mobile-max",
+        "value": "700px"
+      }
     ],
     "provenance": {
-      "sources": ["PRODUCT.md", "web/style.css", "web/index.html", "web/app.js"],
-      "mode": "Operate",
-      "approach": "Direct code-first",
-      "confirmed": ["Guided and Advanced views"],
-      "reviewerDisposition": "Ship following mobile-legibility and stale-simulation fixes",
-      "approvalScope": "Extracted implementation documentation; no additional user visual approval asserted."
-    },
-    "interactionTiming": { "driverRecalculationMs": 350, "knowledgeSearchMs": 200, "chartResizeMs": 150 },
-    "computedChartColor": { "sensitivity": "hsl(137 22% L%) where L = 94 - normalizedValue * 24" }
+      "sources": [
+        "PRODUCT.md",
+        "web/style.css",
+        "web/workspace.css",
+        "web/index.html",
+        "web/workspace.js"
+      ],
+      "approach": "Code-led implemented system; no comp",
+      "cascade": "style.css loads before workspace.css; dark workspace overrides are authoritative",
+      "confirmed": [
+        "GitHub-style dark",
+        "Teen finance learners",
+        "Sans-serif typography",
+        "Dense editable tables",
+        "Green/red candlesticks",
+        "Compact buttons",
+        "Original Valuation Lab branding"
+      ],
+      "verification": "Tokens checked against source cascade. Parent task reports final rendered reviewer disposition: ship; named currency and rate fixes resolved, including percentage inputs and source-currency editable tables."
+    }
   },
   "components": [
     {
-      "name": "Primary calculation button",
+      "name": "Primary action",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The main action for calculating or simulating a research case.",
-      "html": "<button class=\"ds-primary\">Recalculate valuation</button>",
-      "css": ".ds-primary{font:14px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);background:var(--accent,#176854);color:var(--white,#fff);border:1px solid var(--accent,#176854);padding:9px 14px;border-radius:4px;min-height:40px;cursor:pointer}.ds-primary:hover{background:#104c3e}.ds-primary:focus-visible{outline:2px solid var(--focus,#905018);outline-offset:4px}.ds-primary:disabled{opacity:.45;cursor:default}"
+      "description": "Compact green calculation or confirmation action.",
+      "html": "<button class=\"ds-primary\">Calculate</button>",
+      "css": ".ds-primary{font:600 14px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);color:#fff;background:#238636;border:1px solid #2ea043;border-radius:6px;padding:7px 13px;min-height:36px;box-shadow:0 1px 0 #010409;cursor:pointer}.ds-primary:hover{background:#2ea043;border-color:#8b949e}.ds-primary:focus-visible{outline:2px solid var(--focus,#58a6ff);outline-offset:4px}.ds-primary:active{transform:translateY(1px)}.ds-primary:disabled{opacity:.45;cursor:default}@media(max-width:700px){.ds-primary{min-height:40px}}"
     },
     {
-      "name": "Assumption field",
+      "name": "Financial field",
       "kind": "input",
-      "refersTo": "input",
-      "description": "Labeled white fields keep editable assumptions distinct from calculated values.",
-      "html": "<label class=\"ds-label\">WACC uncertainty (pp)<input class=\"ds-input\" type=\"number\" value=\"1\" step=\".1\"></label>",
-      "css": ".ds-label{display:block;font:600 12px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);color:var(--muted,#596a63)}.ds-input{display:block;width:100%;font:14px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);color:var(--ink,#18352f);border:1px solid var(--line,#d6dfd7);border-radius:3px;background:var(--white,#fff);padding:9px;margin:5px 0 12px;caret-color:var(--accent,#176854)}.ds-input:focus-visible{outline:2px solid var(--focus,#905018);outline-offset:4px}"
+      "refersTo": "field",
+      "description": "Explicit percentage label with a numeric entry field.",
+      "html": "<label class=\"ds-label\">Discount rate (%)<input class=\"ds-field\" type=\"number\" value=\"14.5\" step=\"0.1\"></label>",
+      "css": ".ds-label{display:block;color:var(--muted,#9da7b3);font:600 13px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif)}.ds-field{display:block;margin:5px 0 12px;background:var(--paper,#0d1117);color:var(--ink,#e6edf3);border:1px solid #484f58;border-radius:6px;padding:8px 10px;font:14px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);font-variant-numeric:tabular-nums}.ds-field:focus{border-color:#58a6ff}.ds-field:focus-visible{outline:2px solid var(--focus,#58a6ff);outline-offset:4px}"
     },
     {
-      "name": "Analysis navigation",
+      "name": "Statement selector",
       "kind": "nav",
-      "description": "Horizontal, scrollable view selection with a green underline on the current page.",
-      "html": "<nav class=\"ds-tabs\" aria-label=\"Analysis views\"><button aria-current=\"page\">Valuation</button><button>Risk laboratory</button><button>Method studio</button></nav>",
-      "css": ".ds-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line,#d6dfd7);overflow:auto}.ds-tabs button{font:13px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);border:0;border-bottom:2px solid transparent;border-radius:0;background:none;white-space:nowrap;padding:11px 0 15px;min-height:40px;cursor:pointer;color:var(--muted,#596a63)}.ds-tabs button[aria-current]{border-color:var(--accent,#176854);color:var(--accent,#176854);font-weight:650}.ds-tabs button:hover{border-bottom-color:#9ab6a6}.ds-tabs button:focus-visible{outline:2px solid var(--focus,#905018);outline-offset:4px}"
-    },
-    {
-      "name": "Stale result notice",
-      "kind": "custom",
-      "description": "A local warning preserves the distinction between displayed outputs and edited assumptions.",
-      "html": "<p class=\"ds-stale\" role=\"status\">Simulation settings changed. This distribution shows the previous settings. Rerun before saving.</p>",
-      "css": ".ds-stale{font:12px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);padding:12px;background:#f5e6ca;color:#704b17;margin:0 0 20px}"
+      "description": "Wrapping compact pressed-state controls.",
+      "html": "<nav class=\"ds-statements\" aria-label=\"Statement\"><button aria-pressed=\"true\">Income statement</button><button aria-pressed=\"false\">Balance sheet</button></nav>",
+      "css": ".ds-statements{display:flex;flex-wrap:wrap;gap:6px}.ds-statements button{font:600 14px/1.55 var(--sans,'Segoe UI',system-ui,sans-serif);padding:7px 13px;min-height:36px;background:var(--soft,#21262d);color:var(--ink,#e6edf3);border:1px solid var(--line,#30363d);border-radius:6px;box-shadow:0 1px 0 #010409;cursor:pointer}.ds-statements button:hover{background:#30363d;border-color:#8b949e}.ds-statements button[aria-pressed=true]{background:#263749;border-color:#58a6ff}.ds-statements button:focus-visible{outline:2px solid var(--focus,#58a6ff);outline-offset:4px}.ds-statements button:active{transform:translateY(1px)}"
     }
   ],
   "narrative": {
-    "northStar": "The Editorial Research Workbench (descriptive implementation label)",
-    "overview": "A light, restrained workspace pairs serif analytical headings with compact system-font controls. Pale paper surfaces, ruled sections and open chart areas support sustained inspection of assumptions and evidence. This is a record of the implemented direction, not a claim of separate brand approval.",
-    "keyCharacteristics": ["Editorial headings and tabular numbers", "Green base-case and terracotta scenario marks", "Flat ruled sections", "Visible provenance and result validity"],
-    "rules": [{ "name": "The Series Identity Rule", "body": "Preserve green base and terracotta scenario semantics, with dashed scenario lines and explicit labels.", "section": "colors" }],
-    "dos": ["Do reuse the existing typography and paper surfaces.", "Do retain accessible chart descriptions and exact-value tables.", "Do mark stale results and disable invalid exports."],
-    "donts": ["Don't present edited assumptions as already calculated.", "Don't rely on color alone for scenario identity.", "Don't invent additional user design approval."]
+    "northStar": "GitHub-style dark financial workspace",
+    "overview": "A compact, approachable dark workspace for teenage finance learners, students and analysts. Preserve original Valuation Lab branding, plain financial language and inspectable assumptions. This is the implemented code-led direction, replacing the rejected light editorial system.",
+    "keyCharacteristics": [
+      "Dense editable financial tables",
+      "Sans-serif type and tabular numbers",
+      "Dark tonal surfaces",
+      "Blue focus, green actions, green/red candlesticks",
+      "Explicit currency and percentage labels"
+    ],
+    "rules": [
+      {
+        "name": "Source authority",
+        "body": "workspace.css overrides style.css; legacy paper, white and serif variable names do not imply light surfaces or serif typography.",
+        "section": "colors"
+      },
+      {
+        "name": "Tonal structure",
+        "body": "Use borders and dark surface steps; only ordinary buttons receive the small edge shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do retain original Valuation Lab branding.",
+      "Do keep currency, unit and rate labels visible.",
+      "Do preserve keyboard focus and responsive table scrolling.",
+      "Do review the working interface directly."
+    ],
+    "donts": [
+      "Don't restore the light editorial palette or serif headings.",
+      "Don't copy GitHub branding.",
+      "Don't use code editors for normal calculations.",
+      "Don't imply display conversion changes source inputs or calculator denominations."
+    ]
   }
 }

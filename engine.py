@@ -96,11 +96,18 @@ class Case(Input):
     years: Annotated[int, Field(ge=1, le=10)] = 5
     opening: Opening
     drivers: Drivers
+    annual_drivers: Annotated[list[Drivers], Field(max_length=10)] = Field(
+        default_factory=list
+    )
     peers: Annotated[list[Peer], Field(max_length=50)] = Field(default_factory=list)
     risks: Annotated[list[Risk], Field(max_length=30)] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def scenario_bounds(self):
+        if self.annual_drivers and len(self.annual_drivers) != self.years:
+            raise ValueError(
+                "Provide one set of operating drivers for every forecast year"
+            )
         if any(not risk.start <= risk.end <= self.years for risk in self.risks):
             raise ValueError("Risk years must be ordered and within forecast")
         for year in range(1, self.years + 1):
@@ -120,7 +127,8 @@ def effective_drivers(case, risks, year):
             for r in risks
             if r.driver == driver and r.start <= year <= r.end
         )
-        values.append(getattr(case.drivers, driver) + shift / 100)
+        annual = case.annual_drivers[year - 1] if case.annual_drivers else case.drivers
+        values.append(getattr(annual, driver) + shift / 100)
     return values
 
 
@@ -130,6 +138,7 @@ def project(case, risks):
     previous_nwc = o.receivables + o.inventory - o.payables
     rows = []
     for year in range(1, case.years + 1):
+        d = case.annual_drivers[year - 1] if case.annual_drivers else case.drivers
         growth, margin, capex_rate = effective_drivers(case, risks, year)
         revenue *= 1 + growth
         ebitda, capex = revenue * margin, revenue * capex_rate

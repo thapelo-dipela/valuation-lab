@@ -1,0 +1,624 @@
+:root {
+  color-scheme: dark;
+  --paper: #0d1117;
+  --white: #161b22;
+  --ink: #e6edf3;
+  --muted: #9da7b3;
+  --line: #30363d;
+  --accent: #58a6ff;
+  --soft: #21262d;
+  --warm: #f78166;
+  --focus: #58a6ff;
+  --serif: "Segoe UI", system-ui, sans-serif;
+  --sans: "Segoe UI", system-ui, sans-serif;
+}
+body {
+  font-size: 14px;
+  background: var(--paper);
+}
+* {
+  scrollbar-color: #484f58 #0d1117;
+}
+::selection {
+  background: #264f78;
+  color: white;
+}
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  max-width: none;
+}
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+h3 {
+  font-size: 14px;
+}
+button {
+  border-radius: 6px;
+  background: #21262d;
+  box-shadow: 0 1px 0 #010409;
+  padding: 7px 13px;
+  min-height: 36px;
+  font-weight: 600;
+}
+button:hover {
+  background: #30363d;
+  border-color: #8b949e;
+}
+button:active {
+  transform: translateY(1px);
+}
+.primary {
+  background: #238636;
+  border-color: #2ea043;
+  color: #fff;
+}
+.primary:hover {
+  background: #2ea043;
+}
+.text-button {
+  box-shadow: none;
+}
+.masthead {
+  height: 64px;
+  background: #010409;
+  padding: 0 24px;
+  gap: 20px;
+}
+.brand {
+  font: 600 19px var(--sans);
+  letter-spacing: -0.5px;
+}
+.brand > span {
+  font-style: normal;
+  color: #7ee787;
+  margin-left: 4px;
+}
+.edition {
+  border: 0;
+  padding: 0;
+}
+.mode {
+  background: #0d1117;
+}
+.mode button[aria-pressed="true"] {
+  background: #30363d;
+}
+.app-shell {
+  grid-template-columns: 232px minmax(0, 1fr);
+  max-width: none;
+}
+.controls {
+  background: #0d1117;
+  padding: 22px 16px;
+}
+.controls .guide {
+  font-size: 12px;
+}
+.controls .input-heading {
+  margin-top: 24px;
+}
+.controls details.advanced-only {
+  display: none !important;
+}
+.controls #driver-controls {
+  display: none;
+}
+.controls .input-heading {
+  display: none;
+}
+.controls .case-heading {
+  margin-bottom: 16px;
+}
+.workspace-heading {
+  margin-bottom: 20px;
+}
+main#workspace {
+  padding: 24px 28px;
+  min-width: 0;
+}
+.tabs {
+  border-bottom: 1px solid var(--line);
+  gap: 4px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+.tabs button {
+  white-space: nowrap;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 12px 14px;
+  border-radius: 0;
+  position: relative;
+}
+.tabs button[aria-current="page"] {
+  color: var(--ink);
+  background: transparent;
+  border-bottom: 2px solid #f78166;
+}
+.tabs button:hover {
+  background: #161b22;
+}
+.view > section,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #0d1117;
+  margin-top: 20px;
+  padding: 20px;
+}
+.section-heading {
+  margin-bottom: 18px;
+}
+.value-strip {
+  border: 1px solid var(--line);
+  background: #161b22;
+  border-radius: 6px;
+}
+.value-strip strong {
+  font-size: 27px;
+}
+.explanation,
+.demo-notice,
+.stale,
+.empty {
+  background: #161b22;
+  color: var(--muted);
+  border-color: var(--line);
+}
+.demo-notice {
+  padding: 8px;
+  margin: 8px 0 20px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.stale {
+  color: #e3b341;
+}
+.gate {
+  background: #161b22;
+  border-color: var(--line);
+}
+.state.blocked {
+  background: #3d2b14;
+  color: #f2cc60;
+}
+.gate .state.review {
+  color: #79c0ff;
+}
+.gate .state.pass {
+  color: #7ee787;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+th {
+  background: #161b22;
+  color: #9da7b3;
+  font-weight: 500;
+}
+td,
+th {
+  padding: 11px 14px;
+  border-bottom: 1px solid #21262d;
+  white-space: nowrap;
+  text-align: right;
+}
+td:first-child,
+th:first-child {
+  text-align: left;
+}
+tbody tr:hover {
+  background: #161b22;
+}
+input:not([type="range"]),
+select,
+textarea {
+  background: #0d1117;
+  border-color: #484f58;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #8b949e;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #58a6ff;
+}
+.scroll {
+  overflow: auto;
+}
+.scroll th:first-child,
+.scroll td:first-child {
+  position: sticky;
+  left: 0;
+  background: #0d1117;
+  z-index: 1;
+}
+.scroll th:first-child {
+  background: #161b22;
+}
+svg text {
+  fill: #9da7b3;
+}
+svg line {
+  stroke: #30363d;
+}
+.chart {
+  background: transparent;
+}
+.metric-label,
+.small {
+  color: var(--muted);
+}
+.two-col {
+  gap: 20px;
+}
+.workspace-tools {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.workspace-tools label {
+  min-width: 120px;
+  font-size: 12px;
+}
+.workspace-tools input,
+.workspace-tools select {
+  margin-bottom: 0;
+}
+.workspace-tools p {
+  font-size: 12px;
+}
+.statement-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.statement-tabs button[aria-pressed="true"] {
+  background: #263749;
+  border-color: #58a6ff;
+}
+.workspace-chart {
+  width: 100%;
+  height: 260px;
+  display: block;
+}
+.account-grid input {
+  width: 128px !important;
+  margin: 0 !important;
+  text-align: right;
+  border-color: transparent !important;
+  background: transparent !important;
+}
+.account-grid input:focus {
+  border-color: #58a6ff !important;
+  background: #161b22 !important;
+}
+.account-grid td {
+  padding: 4px 8px;
+}
+.subtle {
+  color: #9da7b3;
+  font-size: 12px;
+}
+.up {
+  color: #3fb950;
+}
+.down {
+  color: #f85149;
+}
+.headline-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.facts {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.facts strong {
+  display: block;
+  font-size: 24px;
+  color: #e6edf3;
+}
+.facts span {
+  font-size: 12px;
+  color: #9da7b3;
+}
+.currency-note {
+  padding: 10px 0;
+  font-size: 12px;
+  max-width: none;
+}
+.method-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.method-fields label {
+  font-size: 13px;
+}
+.method-fields fieldset {
+  border: 1px solid #30363d;
+  min-width: 0;
+}
+.method-fields input {
+  margin: 5px 0;
+}
+.method-fields .array-fields {
+  display: flex;
+  gap: 6px;
+  overflow: auto;
+}
+.method-fields .array-fields input {
+  min-width: 75px;
+}
+.method-results {
+  font-family: var(--sans);
+  white-space: normal;
+}
+.method-results dl {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) 1fr;
+  gap: 12px;
+}
+.method-results dt {
+  color: #9da7b3;
+}
+.method-results dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.method-results ul {
+  padding-left: 20px;
+}
+.side-nav {
+  display: grid;
+  gap: 4px;
+  margin: 24px 0;
+}
+.side-nav button {
+  text-align: left;
+  box-shadow: none;
+  border: 0;
+  background: transparent;
+  font-weight: 400;
+}
+.side-nav button:hover {
+  background: #161b22;
+}
+.side-nav button[aria-current="page"] {
+  background: #21262d;
+  color: #79c0ff;
+}
+.side-label {
+  font-size: 12px;
+  color: #9da7b3;
+  margin-bottom: 8px;
+}
+.import-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.import-row input[type="file"] {
+  width: 230px;
+}
+.skip {
+  background: #161b22;
+}
+.method-hidden {
+  display: none !important;
+}
+#method-output {
+  display: none;
+}
+#download {
+  font-size: 12px;
+}
+#account-notice {
+  margin: 12px 0;
+}
+#account-status,
+#fx-status {
+  color: #f2cc60;
+}
+#market-chart line.candle-up {
+  stroke: #3fb950;
+}
+#market-chart line.candle-down {
+  stroke: #f85149;
+}
+@media (max-width: 1000px) {
+  .app-shell {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+  main#workspace {
+    padding: 20px 16px;
+  }
+  .masthead .edition {
+    display: none;
+  }
+  .tabs button {
+    padding: 12px 10px;
+  }
+  .method-fields {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .app-shell {
+    display: block;
+  }
+  .controls {
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 16px;
+  }
+  .controls .side-nav,
+  .controls .case-heading,
+  .controls > label,
+  .controls #company-input,
+  .controls .guide,
+  .controls #status,
+  .controls #run,
+  .controls #save {
+    display: none;
+  }
+  .controls .demo-notice {
+    margin: 0;
+    font-size: 12px;
+  }
+  .masthead {
+    padding: 0 16px;
+    height: 58px;
+    gap: 10px;
+  }
+  .api-link {
+    display: none;
+  }
+  .mode button {
+    padding: 4px 8px;
+  }
+  .brand {
+    font-size: 17px;
+  }
+  .workspace-heading {
+    align-items: start;
+    gap: 10px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  main#workspace {
+    padding: 18px 12px;
+  }
+  .view > section,
+  .panel {
+    padding: 14px;
+  }
+  .workspace-tools {
+    gap: 8px;
+  }
+  .workspace-tools label {
+    min-width: 100px;
+    flex: 1;
+  }
+  .facts {
+    gap: 20px;
+  }
+  .facts strong {
+    font-size: 21px;
+  }
+  .method-fields {
+    display: block;
+  }
+  .headline-row {
+    align-items: start;
+    flex-direction: column;
+  }
+  .value-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .workspace-chart {
+    height: 220px;
+  }
+  .tabs {
+    margin-left: -12px;
+    margin-right: -12px;
+    padding: 0 6px;
+  }
+  .scroll {
+    max-width: 100%;
+  }
+  button {
+    min-height: 40px;
+  }
+}
+#status {
+  font-size: 12px;
+  color: #9da7b3;
+  margin: 12px 0;
+  padding: 8px 10px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background: #161b22;
+}
+#status.error {
+  color: #ffa198;
+  border-color: #f85149;
+}
+.view {
+  padding-top: 8px;
+}
+.currency-note {
+  padding: 4px 0;
+}
+#fx-status:empty,
+#account-status:empty {
+  display: none;
+}
+.workspace-tools {
+  margin: 12px 0;
+}
+.workspace-tools label {
+  font-size: 13px;
+}
+.method-results {
+  margin-top: 16px;
+}
+#method-chart {
+  display: none;
+}
+#method-help {
+  margin-bottom: 20px;
+}
+#calculate-method {
+  margin-top: 16px;
+}
+.account-grid th {
+  font-size: 13px;
+}
+footer {
+  font-size: 11px;
+}
+.view > p.subtle {
+  margin-top: 10px;
+}
+.workspace-chart {
+  height: auto;
+  min-height: 220px;
+}
+#account-source {
+  min-width: 260px;
+}
+.panel {
+  margin-top: 16px;
+}
+#account-chart {
+  margin-top: 14px;
+}
+#accounting > .currency-note {
+  max-width: 90ch;
+}
+#accounting > .workspace-tools {
+  margin-bottom: 14px;
+}
